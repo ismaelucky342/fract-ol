@@ -1,5 +1,6 @@
 # Fract-ol
 ![image](https://github.com/ismaelucky342/fract-ol/assets/153450550/59d0be7b-193b-4d10-b637-2ec0b085e3ae)
+
 The term fractal was first used by the mathematician Benoit Mandelbrot.
 in 1974, was based on the Latin word fractus, which means “broken” or “fractured.”
 A fractal is an object of mathematical abstraction, such as a curve or surface, that retains a similar pattern regardless of scale.
