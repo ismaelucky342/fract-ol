@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 02:36:46 by ismherna          #+#    #+#             */
-/*   Updated: 2024/04/08 02:52:10 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/04/08 14:01:46 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,8 +118,26 @@ typedef struct s_fractol
 	t_zoom	zoom;
 }			t_fractol;
 
+/*INIT*/
+void init_mlx(t_fractol *fractol);
+void init_fractol(t_fractol *fractol);
 
+/*Fractal*/
+void draw_mandelbrot(t_fractol *fractol);
+void draw_julia(t_fractol *fractol);
+void draw_burning_ship(t_fractol *fractol);
+void draw_fractal(t_fractol *fractol);
 
+/*Hooks*/
+int handle_key_press(int keycode, t_fractol *fractol);
+int handle_mouse_press(int button, int x, int y, t_fractol *fractol);
+int handle_mouse_move(int x, int y, t_fractol *fractol);
+
+/*Utils */
+void zoom(t_fractol *fractol, double zoom_factor, int x, int y);
+void move(t_fractol *fractol, int direction);
+void reset_fractol(t_fractol *fractol);
+void update_palette(t_fractol *fractol);
 
 
 

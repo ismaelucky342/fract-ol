@@ -6,12 +6,13 @@
 #    By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/22 15:48:04 by ismherna          #+#    #+#              #
-#    Updated: 2024/04/08 03:04:57 by ismherna         ###   ########.fr        #
+#    Updated: 2024/04/08 12:44:01 by ismherna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	libft.a
-INCLUDE	= 	pintf.h
+INCLUDE	= 	pintf.h \
+			libft.h 
 
 SRC		=	ft_printf.c			\
 			ft_string.c			\
@@ -62,8 +63,8 @@ SRC		=	ft_printf.c			\
 			ft_lstdelone_bonus.c \
 			ft_lstclear_bonus.c \
 			ft_lstiter_bonus.c \
-			ft_lstmap_bonus.c
-
+			ft_lstmap_bonus.c  \
+			ft_atdoub.c 
 OBJ		=	${SRC:.c=.o}
 
 CC		=	gcc
@@ -85,28 +86,29 @@ CYAN        =   \033[0;96m
 WHITE       =   \033[0;97m
 
 .c.o:
-	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+	@${CC} ${CFLAGS} -c $< -o ${<:.c=.o} && \
+	echo "$(CYAN)Compiling $<$(DEF_COLOR)"
+
+
 
 all: $(NAME)
 
 
 $(NAME):	${OBJ} 
-	@echo "Compiling .."
-	${AR} ${NAME} ${OBJ}
-	${RN} ${NAME}
-	@echo "$(GREEN)libft compiled!$(DEF_COLOR)"
-	@echo "$(BLUE)Objetos  compilados:  $(words $(NAME)  ${OBJ})$(DEF_COLOR)"
+	@echo "$(GREEN)Creating $(NAME) ...$(DEF_COLOR)"
+	@${AR} ${NAME} ${OBJ}
+	@${RN} ${NAME}
+	@echo "$(GREEN)$(NAME) compiled!$(DEF_COLOR)"
+	@echo "$(BLUE)Objects compiled: $(words $(OBJ))$(DEF_COLOR)"
 
 clean:
-	@echo "$(RED)Removing .o  ...$(DEF_COLOR)"
-	${RM} ${OBJ}
-	@echo "$(BLUE)Objetos  Borrados: $(words ${OBJ})  ${OBJ}$(DEF_COLOR)"
-	@echo "$(GREEN)Done !"
+	@echo "$(RED)Removing .o files...$(DEF_COLOR)"
+	@${RM} ${OBJ}
+	@echo "$(GREEN)Done!$(DEF_COLOR)"
 
 fclean: clean
-	@echo "$(RED)Removing libft.a ...$(DEF_COLOR)"	
-	${RM} $(NAME)
-	@echo "$(BLUE)Objetos  Borrados:  $(words $(NAME))  $(NAME)$(DEF_COLOR)"
-	@echo "$(GREEN)Done !$(DEF_COLOR)"
+	@echo "$(RED)Removing $(NAME) ...$(DEF_COLOR)"	
+	@${RM} $(NAME)
+	@echo "$(GREEN)Done!$(DEF_COLOR)"
 
 re: fclean all  
