@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slegaris <slegaris@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 20:09:10 by slegaris          #+#    #+#             */
-<<<<<<< HEAD
 /*   Updated: 2024/04/12 18:55:31 by ismherna         ###   ########.fr       */
-=======
-/*   Updated: 2024/04/09 20:41:08 by slegaris         ###   ########.fr       */
->>>>>>> af345d2c3af1a00d266c0fc367bee43d6525f67f
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +22,15 @@
 # include "mlx/mlx.h"
 # include <math.h>
 
-<<<<<<< HEAD
 // Macros principales 
 
-=======
->>>>>>> af345d2c3af1a00d266c0fc367bee43d6525f67f
 # define WIN_WIDTH 500
 # define WIN_HEIGHT 500
 # define MAX_ITER 100
 # define CENTER_REAL -0.75
 # define CENTER_IMAG -0.75
 
-<<<<<<< HEAD
 // Macros para las teclas 
-=======
-// KEY's MACROS
->>>>>>> af345d2c3af1a00d266c0fc367bee43d6525f67f
 
 # define ESC 53
 # define RESET 15
@@ -61,12 +50,9 @@
 # define RIGHT 124
 # define ON_DESTROY 17
 
-<<<<<<< HEAD
 
 // Area de estructuras 
 
-=======
->>>>>>> af345d2c3af1a00d266c0fc367bee43d6525f67f
 typedef struct s_complex
 {
 	double	real;
@@ -137,11 +123,7 @@ typedef struct s_fractol
 	t_zoom	zoom;
 }			t_fractol;
 
-<<<<<<< HEAD
 // Funciones principales //
-=======
-// Functions //
->>>>>>> af345d2c3af1a00d266c0fc367bee43d6525f67f
 void		defsetup(t_mlx *mlx_info);
 void		iterations(int key, t_mlx *mlx_info);
 void		zoom(int key, t_mlx *mlx_info);
@@ -164,11 +146,7 @@ int			julia_iter(double x, double y, int maxiter, t_complex c);
 void		checkargs(int ac, char **av, t_mlx *mlx_info);
 void		def_complex(t_mlx *mlx_info);
 
-<<<<<<< HEAD
 // Colores //
-=======
-// Colors //
->>>>>>> af345d2c3af1a00d266c0fc367bee43d6525f67f
 int			calc_col(int iteration, t_mlx mlx_info);
 int			create_trgb(int t, int r, int g, int b);
 int			get_t(int trgb);
@@ -182,9 +160,4 @@ void		color3(int key, t_mlx *mlx_info);
 void		color4(int key, t_mlx *mlx_info);
 void		color5(int key, t_mlx *mlx_info);
 
-<<<<<<< HEAD
-=======
-// X //
-
->>>>>>> af345d2c3af1a00d266c0fc367bee43d6525f67f
 #endif

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
@@ -11,8 +10,6 @@
 #                                                                              #
 # **************************************************************************** #
 
-=======
->>>>>>> af345d2c3af1a00d266c0fc367bee43d6525f67f
 NAME = fractol
 
 SRC_DIR = src
@@ -47,22 +44,8 @@ LDFLAGS = -fsanitize=address
 all: $(NAME)
 
 $(NAME): $(LIBFT_LIB) $(MLX_LIB) $(OBJS)
-<<<<<<< HEAD
 	@$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT) -L$(MLX) -lft $(MINILIBX) -o $(NAME)
 	@echo "\033[0;36mCompilation of $(NAME) completed!\033[0m"
-=======
-	@$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT) -L$(MLX) -lft $(MINILIBX) -o $(NAME) >/dev/null 2>&1
-	@echo "	  ██████  ██▓    ▓█████   ▄████  ▄▄▄       ██▀███   ██▓  ██████ "
-	@echo "	▒██    ▒ ▓██▒    ▓█   ▀  ██▒ ▀█▒▒████▄    ▓██ ▒ ██▒▓██▒▒██    ▒ "
-	@echo "	░ ▓██▄   ▒██░    ▒███   ▒██░▄▄▄░▒██  ▀█▄  ▓██ ░▄█ ▒▒██▒░ ▓██▄   "
-	@echo "	  ▒   ██▒▒██░    ▒▓█  ▄ ░▓█  ██▓░██▄▄▄▄██ ▒██▀▀█▄  ░██░  ▒   ██▒"
-	@echo "	▒██████▒▒░██████▒░▒████▒░▒▓███▀▒ ▓█   ▓██▒░██▓ ▒██▒░██░▒██████▒▒"
-	@echo "	▒ ▒▓▒ ▒ ░░ ▒░▓  ░░░ ▒░ ░ ░▒   ▒  ▒▒   ▓▒█░░ ▒▓ ░▒▓░░▓  ▒ ▒▓▒ ▒ ░"
-	@echo "	░ ░▒  ░ ░░ ░ ▒  ░ ░ ░  ░  ░   ░   ▒   ▒▒ ░  ░▒ ░ ▒░ ▒ ░░ ░▒  ░ ░"
-	@echo "	░  ░  ░    ░ ░      ░   ░ ░   ░   ░   ▒     ░░   ░  ▒ ░░  ░  ░  "
-	@echo "		  ░      ░  ░   ░  ░      ░       ░  ░   ░      ░        ░  "
-	@echo "			\033[0;36mCompilation of $(NAME) completed!\033[0m"
->>>>>>> af345d2c3af1a00d266c0fc367bee43d6525f67f
 
 $(LIBFT_LIB):
 	@echo "Compiling Libft..."
@@ -97,8 +80,4 @@ asan: CC += $(LDFLAGS)
 asan: CFLAGS += -g3
 asan: re
 
-<<<<<<< HEAD
 .PHONY: all clean fclean re asan norm
-=======
-.PHONY: all clean fclean re asan
->>>>>>> af345d2c3af1a00d266c0fc367bee43d6525f67f
