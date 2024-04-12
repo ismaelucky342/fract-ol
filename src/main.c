@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -16,6 +17,13 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
+=======
+#include "../fractol.h"
+#include "../libft/libft.h"
+#include <sys/wait.h>
+#include <unistd.h>
+
+>>>>>>> af345d2c3af1a00d266c0fc367bee43d6525f67f
 t_complex	map_pixel_to_complex(int x, int y, t_mlx mlx_info)
 {
 	t_complex	n;

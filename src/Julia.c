@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -13,6 +14,10 @@
 
 #include "../fractol.h"
 
+=======
+#include "../fractol.h"
+
+>>>>>>> af345d2c3af1a00d266c0fc367bee43d6525f67f
 double	map_pixel_to_y(int y, t_mlx mlx_info)
 {
 	double	res;
