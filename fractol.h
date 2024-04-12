@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: slegaris <slegaris@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/08 02:36:46 by ismherna          #+#    #+#             */
-/*   Updated: 2024/04/08 14:01:46 by ismherna         ###   ########.fr       */
+/*   Created: 2023/10/20 20:09:10 by slegaris          #+#    #+#             */
+/*   Updated: 2024/04/09 20:41:08 by slegaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,14 @@
 # include "mlx/mlx.h"
 # include <math.h>
 
-# define WIN_WIDTH 800
-# define WIN_HEIGHT 800
+# define WIN_WIDTH 500
+# define WIN_HEIGHT 500
 # define MAX_ITER 100
 # define CENTER_REAL -0.75
 # define CENTER_IMAG -0.75
 
-/*Keys*/
+// KEY's MACROS
+
 # define ESC 53
 # define RESET 15
 # define IPLUS 34
@@ -46,7 +47,6 @@
 # define LEFT 123
 # define RIGHT 124
 # define ON_DESTROY 17
-
 
 typedef struct s_complex
 {
@@ -118,27 +118,43 @@ typedef struct s_fractol
 	t_zoom	zoom;
 }			t_fractol;
 
-/*INIT*/
-void init_mlx(t_fractol *fractol);
-void init_fractol(t_fractol *fractol);
+// Functions //
+void		defsetup(t_mlx *mlx_info);
+void		iterations(int key, t_mlx *mlx_info);
+void		zoom(int key, t_mlx *mlx_info);
+void		movement(int key, t_mlx *mlx_info);
+void		reset(int key, t_mlx *mlx_info);
+void		escape(int key);
+void		setup_mlx(t_mlx *mlx_info);
+void		setup_hooks(t_mlx *mlx_info);
+int			zoomhook(int button, int x, int y, void *param);
+int			keyhook(int key, t_mlx *mlx_info);
+void		endclose(t_mlx *data);
+void		update_zoom_and_redraw(t_mlx *mlx_info, int delta);
+t_complex	map_pixel_to_complex(int x, int y, t_mlx mlx_info);
+void		my_mlx_pixel_put(t_img *img, int x, int y, int color);
+void		draw_mandelbrot(t_img *img, t_mlx mlx_info);
+int			mandelbrot_iter(t_complex c, int maxiter);
+void		my_mlx_pixel_put(t_img *img, int x, int y, int color);
+void		draw_julia(t_img *img, t_mlx *mlx_info);
+int			julia_iter(double x, double y, int maxiter, t_complex c);
+void		checkargs(int ac, char **av, t_mlx *mlx_info);
+void		def_complex(t_mlx *mlx_info);
 
-/*Fractal*/
-void draw_mandelbrot(t_fractol *fractol);
-void draw_julia(t_fractol *fractol);
-void draw_burning_ship(t_fractol *fractol);
-void draw_fractal(t_fractol *fractol);
+// Colors //
+int			calc_col(int iteration, t_mlx mlx_info);
+int			create_trgb(int t, int r, int g, int b);
+int			get_t(int trgb);
+int			get_r(int trgb);
+int			get_g(int trgb);
+int			get_b(int trgb);
+void		colors(int key, t_mlx *mlx_info);
+void		color1(int key, t_mlx *mlx_info);
+void		color2(int key, t_mlx *mlx_info);
+void		color3(int key, t_mlx *mlx_info);
+void		color4(int key, t_mlx *mlx_info);
+void		color5(int key, t_mlx *mlx_info);
 
-/*Hooks*/
-int handle_key_press(int keycode, t_fractol *fractol);
-int handle_mouse_press(int button, int x, int y, t_fractol *fractol);
-int handle_mouse_move(int x, int y, t_fractol *fractol);
+// X //
 
-/*Utils */
-void zoom(t_fractol *fractol, double zoom_factor, int x, int y);
-void move(t_fractol *fractol, int direction);
-void reset_fractol(t_fractol *fractol);
-void update_palette(t_fractol *fractol);
-
-
-
-#endif 
+#endif
