@@ -3,41 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
+/*   By: slegaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
-/*   Updated: 2024/02/20 09:32:28 by ismherna         ###   ########.fr       */
+/*   Created: 2023/03/15 01:02:21 by slegaris          #+#    #+#             */
+/*   Updated: 2023/03/21 15:58:29 by slegaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-//#include <stdio.h>
+#include <stdlib.h>
+
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*str;
+	char	*dst;
 	size_t	start;
 	size_t	end;
 
-	start = 0;
-	if (!s1 || !set)
+	if (!s1)
 		return (NULL);
+	start = 0;
+	end = ft_strlen(s1) - 1;
+	if (!set)
+		return (ft_strdup(s1));
 	while (s1[start] && ft_strchr(set, s1[start]))
-		start++;
-	end = ft_strlen(s1);
-	while (end > start && ft_strchr(set, s1[end - 1]))
-		end--;
-	str = ft_substr(s1, start, end - start);
-	return (str);
+		++start;
+	while (s1[end] && ft_strchr(set, s1[end]))
+		--end;
+	dst = ft_substr(s1, start, end - start + 1);
+	return (dst);
 }
-/*int		main(){
-
-	const char *string = "	hola mundo  ";
-	const char *trimeo = " \t\n";
-
-	char	*cadena = ft_strtrim(*string, *trimeo);
-
-	printf("La cadena original es: %s\n", string);
-	printf("la cadena recortada es: %s\n", cadena);
-	free(cadena);
-	return 0;
-}*/

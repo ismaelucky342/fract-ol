@@ -3,57 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
+/*   By: slegaris <slegaris@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
-/*   Updated: 2024/02/12 11:51:58 by ismherna         ###   ########.fr       */
+/*   Created: 2023/03/09 20:40:27 by slegaris          #+#    #+#             */
+/*   Updated: 2023/03/21 16:04:27 by slegaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-//#include <stdio.h>
+#include <stddef.h>
+#include <stdlib.h>
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*str;
-	int		a;
-	int		b;
-	int		i;
+	char	*dest;
+	size_t	i;
+	size_t	j;
 
 	if (!s1 || !s2)
 		return (NULL);
-	a = ft_strlen(s1);
-	b = ft_strlen(s2);
 	i = 0;
-	str = malloc(a + b + 1);
-	if (!str)
+	j = 0;
+	dest = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	if (!dest)
 		return (NULL);
 	while (s1[i])
 	{
-		str[i] = s1[i];
+		dest[i] = s1[i];
 		i++;
 	}
-	while (s2[i - a])
+	while (s2[j])
 	{
-		str[i] = s2[i - a];
+		dest[i] = s2[j];
 		i++;
+		j++;
 	}
-	str[i] = '\0';
-	return (str);
+	dest[i] = '\0';
+	return (dest);
 }
-
-/*int 	main()
-{
-	const	char *string1 = "hola";
-	const	char *string2 = " mundo";
-
-	char	*resultado = ft_strjoin(string1, string2);
-	if(resultado)
-	{
-		printf("la cadena unida es: %s", resultado);
-		free(resultado); 
-	}else{
-		printf("ERROR CADENA NULA");
-	}
-	return 0; 
-}*/

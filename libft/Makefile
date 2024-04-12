@@ -1,114 +1,101 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+         #
+#    By: slegaris <slegaris@student.42madrid.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/02/22 15:48:04 by ismherna          #+#    #+#              #
-#    Updated: 2024/04/08 12:44:01 by ismherna         ###   ########.fr        #
+#    Created: 2023/03/27 19:41:29 by slegaris          #+#    #+#              #
+#    Updated: 2024/03/06 18:24:43 by slegaris         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	libft.a
-INCLUDE	= 	pintf.h \
-			libft.h 
+ARFLAGS = -rcs
 
-SRC		=	ft_printf.c			\
-			ft_string.c			\
-			ft_unsigned.c		\
-			ft_number.c			\
-			ft_hexadecimals.c	\
-			ft_char.c			\
-			ft_pointers.c		\
-			ft_tolower.c \
-			ft_putstr_fd.c \
-			ft_putendl_fd.c \
-			ft_isalnum.c \
-			ft_isalpha.c \
-			ft_isdigit.c \
-			ft_isascii.c \
-			ft_isprint.c \
-			ft_strlen.c \
-			ft_memset.c \
-			ft_bzero.c \
-			ft_memcpy.c \
-			ft_memmove.c \
-			ft_strlcpy.c \
-			ft_strlcat.c \
-			ft_toupper.c \
-			ft_strncmp.c \
-			ft_strnstr.c \
-			ft_putchar_fd.c \
-			ft_putnbr_fd.c \
-			ft_strjoin.c \
-			ft_calloc.c \
-			ft_strdup.c \
-			ft_memchr.c \
-			ft_memcmp.c \
-			ft_substr.c \
-			ft_itoa.c \
-			ft_split.c \
-			ft_strrchr.c \
-			ft_strmapi.c \
-			ft_striteri.c \
-			ft_atoi.c \
-			ft_strchr.c \
-			ft_strtrim.c \
-			ft_lstnew_bonus.c \
-			ft_lstadd_front_bonus.c \
-			ft_lstsize_bonus.c \
-			ft_lstlast_bonus.c \
-			ft_lstadd_back_bonus.c \
-			ft_lstdelone_bonus.c \
-			ft_lstclear_bonus.c \
-			ft_lstiter_bonus.c \
-			ft_lstmap_bonus.c  \
-			ft_atdoub.c 
-OBJ		=	${SRC:.c=.o}
+RM = rm -f
 
-CC		=	gcc
-RM		=	rm -f
-AR		=	ar rc
-RN		=	ranlib
+CC = gcc
 
-CFLAGS	=	-Wall -Wextra -Werror
+CCFLAGS = -Wall -Wextra -Werror
 
-# Colors
-DEF_COLOR   =   \033[0;39m
-GRAY        =   \033[0;90m
-RED         =   \033[0;91m
-GREEN       =   \033[0;92m
-YELLOW      =   \033[0;93m
-BLUE        =   \033[0;94m
-MAGENTA     =   \033[0;95m
-CYAN        =   \033[0;96m
-WHITE       =   \033[0;97m
+NAME = libft.a
 
-.c.o:
-	@${CC} ${CFLAGS} -c $< -o ${<:.c=.o} && \
-	echo "$(CYAN)Compiling $<$(DEF_COLOR)"
+SRC =	ft_strlen.c\
+	ft_isdigit.c\
+	ft_isalpha.c\
+	ft_substr.c\
+	ft_putstr_fd.c\
+	ft_isprint.c\
+	ft_isascii.c\
+	ft_isalnum.c\
+	ft_putnbr_fd.c\
+	ft_putchar_fd.c\
+	ft_putendl_fd.c\
+	ft_toupper.c\
+	ft_tolower.c\
+	ft_atoi.c\
+	ft_atol.c\
+	ft_strncmp.c\
+	ft_strchr.c\
+	ft_strchr.c\
+	ft_memset.c\
+	ft_bzero.c\
+	ft_memcpy.c\
+	ft_strrchr.c\
+	ft_strlcpy.c\
+	ft_strlcat.c\
+	ft_memmove.c\
+	ft_calloc.c\
+	ft_strdup.c\
+	ft_memchr.c\
+	ft_memcmp.c\
+	ft_strnstr.c\
+	ft_strjoin.c\
+	ft_strtrim.c\
+	ft_itoa.c\
+	ft_strmapi.c\
+	ft_split.c\
+	ft_countnbr_p.c\
+	ft_printf.c\
+	ft_putchar_p.c\
+	ft_putnbr_p.c\
+	ft_putnbr_unsg_p.c\
+	ft_putnbrhex_mayus_p.c\
+	ft_putnbrhex_minus_p.c\
+	ft_putptr_p.c\
+	ft_putstr_p.c\
+	ft_lstsize.c\
+	ft_lstnew.c\
+	ft_lstlast.c\
+	ft_lstiter.c\
+	ft_lstdelone.c\
+	ft_lstclear.c\
+	ft_lstadd_front.c\
+	ft_lstadd_back.c\
+	ft_intlen.c\
+	ft_isnumber.c\
+	ptr_to_hex.c\
+	ft_rand.c\
+	ft_strcmp.c\
+	ft_atof.c\
 
+OBJ = $(SRC:.c=.o)
 
+INCLUDE = libft.h
 
 all: $(NAME)
 
+$(NAME): $(OBJ) $(INCLUDE)
+	@ $(AR) $(ARFLAGS) $(NAME) $(OBJ)
 
-$(NAME):	${OBJ} 
-	@echo "$(GREEN)Creating $(NAME) ...$(DEF_COLOR)"
-	@${AR} ${NAME} ${OBJ}
-	@${RN} ${NAME}
-	@echo "$(GREEN)$(NAME) compiled!$(DEF_COLOR)"
-	@echo "$(BLUE)Objects compiled: $(words $(OBJ))$(DEF_COLOR)"
-
+%.o: %.c
+	@ $(CC) $(CCFLAGS) -c -o $@ $<
 clean:
-	@echo "$(RED)Removing .o files...$(DEF_COLOR)"
-	@${RM} ${OBJ}
-	@echo "$(GREEN)Done!$(DEF_COLOR)"
+	$(RM) $(OBJ)
 
 fclean: clean
-	@echo "$(RED)Removing $(NAME) ...$(DEF_COLOR)"	
-	@${RM} $(NAME)
-	@echo "$(GREEN)Done!$(DEF_COLOR)"
+	@ $(RM) $(NAME)
 
-re: fclean all  
+re: fclean all
+
+.PHONY: all clean fclean re

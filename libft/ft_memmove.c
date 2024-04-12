@@ -3,46 +3,44 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
+/*   By: slegaris <slegaris@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
-/*   Updated: 2024/02/12 11:51:58 by ismherna         ###   ########.fr       */
+/*   Created: 2023/03/08 23:30:37 by slegaris          #+#    #+#             */
+/*   Updated: 2023/04/03 17:54:53 by slegaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-//#include <stdio.h>
+#include <stdio.h>
+#include <string.h>
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	unsigned char		*dest_cpy;
-	const unsigned char	*src_cpy;
+	size_t	i;
 
-	if (dest == NULL && src == NULL)
+	i = 0;
+	if (dst == NULL && src == NULL)
 		return (NULL);
-	dest_cpy = (unsigned char *)dest;
-	src_cpy = (const unsigned char *)src;
-	if (dest <= src)
+	if (src < dst)
 	{
-		while (n--)
-			*dest_cpy++ = *src_cpy++;
+		while (len--)
+			((unsigned char *)dst)[len] = ((unsigned char *)src)[len];
 	}
 	else
 	{
-		dest_cpy += n;
-		src_cpy += n;
-		while (n--)
-			*--dest_cpy = *--src_cpy;
+		while (i < len)
+		{
+			((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
+			i++;
+		}
 	}
-	return (dest);
+	return (dst);
 }
-/*int		main(){
-
-	char	destino[] = "abcde";
-	char	origen[] = "poiss";
-	size_t	t = 5; 
-
-	void	*resultado = ft_memmove(destino, origen, t);
-	printf("la cadena resultante es: %s", (char *)resultado); 
-	return 0; 
-}*/
+//
+// int	main(void)
+// {
+// 	char *dst = " ";
+//
+// 	printf("%s\n", ft_memmove((char *)dst, "abcdefg", 4));
+// 	printf("%s\n", memmove((char *)dst, "abcdefg", 4));
+// 	return 0;
+// }

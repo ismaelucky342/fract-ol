@@ -3,41 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
+/*   By: slegaris <slegaris@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
-/*   Updated: 2024/02/12 11:51:58 by ismherna         ###   ########.fr       */
+/*   Created: 2023/03/08 16:54:30 by slegaris          #+#    #+#             */
+/*   Updated: 2023/03/24 14:47:52 by slegaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+#include <string.h>
 #include "libft.h"
-//#include <stdio.h>
 
-char	*ft_strchr(const char *str, int c)
+char	*ft_strchr(const char *s, int c)
 {
-	unsigned char	b;
-	int				i;
+	int		i;
+	char	*z;
 
-	b = (unsigned char)c;
 	i = 0;
-	while (str[i] != '\0')
+	z = (char *)s;
+	while (z[i] != '\0')
 	{
-		if ((unsigned char)str[i] == b)
-			return ((char *)&str[i]);
+		if (z[i] == (char)c)
+			return (&z[i]);
 		i++;
 	}
-	if (b == '\0')
-		return ((char *)&str[i]);
+	if ((char)c == '\0')
+		return (&z[i]);
 	return (NULL);
 }
-
-
-/*int		main(){
-
-	const	char *string = "hola mundo";
-	int		busqueda = 'u'; 
-
-	char	*resultado =  ft_strchr(string, busqueda);
-	printf("Caracter '%c' encontrado en la posicion: %ld\n", *resultado, resultado - string);
-	return 0; 
-}*/
+// char	*ft_strchr(const char *s, int c)
+// {
+// 	return (ft_memchr(s, c, ft_strlen(s) + 1));
+// }
+//
+// int	main(void)
+// {
+// 	char *s = "test";
+// 	int c = 's';
+//
+// 	printf("%s\n", ft_strchr(s, c));
+// 	printf("%s\n", strchr(s, c));
+// 	return 0;
+// }

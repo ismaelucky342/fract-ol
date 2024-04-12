@@ -3,39 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
+/*   By: slegaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
-/*   Updated: 2024/02/12 11:51:58 by ismherna         ###   ########.fr       */
+/*   Created: 2023/03/20 15:23:43 by slegaris          #+#    #+#             */
+/*   Updated: 2023/03/21 16:04:55 by slegaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
-
-char	map_function(unsigned int index, char c)
-{
-	if (index % 2 == 0)
-		return (ft_toupper(c));
-	else
-		return (ft_tolower(c));
-}
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int		i;
-	int		len;
-	char	*str;
+	size_t	i;
+	size_t	len;
+	char	*s1;
 
+	if (!s)
+		return (NULL);
 	i = 0;
 	len = ft_strlen(s);
-	str = malloc(sizeof(char) * (len + 1));
-	if (!s || !str)
+	s1 = (char *)malloc(sizeof(char) * (len + 1));
+	if (!s1 || !f)
+		return (NULL);
+	if (!s1)
 		return (NULL);
 	while (i < len)
 	{
-		str[i] = f(i, s[i]);
+		s1[i] = f(i, s[i]);
 		i++;
 	}
-	str[len] = '\0';
-	return (str);
+	s1[i] = '\0';
+	return (s1);
 }

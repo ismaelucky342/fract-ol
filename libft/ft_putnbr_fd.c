@@ -3,30 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
+/*   By: slegaris <slegaris@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
-/*   Updated: 2024/02/12 11:51:58 by ismherna         ###   ########.fr       */
+/*   Created: 2023/03/07 20:48:30 by slegaris          #+#    #+#             */
+/*   Updated: 2023/03/13 18:19:28 by slegaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <unistd.h>
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	long int	copia;
-
-	copia = n;
-	if (copia < 0)
+	if (n == -2147483648)
 	{
-		copia = (copia * -1);
-		write(fd, "-", 1);
+		ft_putstr_fd("-2147483648", fd);
+		return ;
 	}
-	if (copia > 9)
+	if (n < 0)
 	{
-		ft_putnbr_fd(copia / 10, fd);
-		ft_putchar_fd((copia % 10) + '0', fd);
+		ft_putstr_fd("-", fd);
+		n = -n;
+	}
+	if (n <= 9)
+	{
+		ft_putchar_fd((char)n + '0', fd);
 	}
 	else
-		ft_putchar_fd(copia + '0', fd);
+	{
+		ft_putnbr_fd(n / 10, fd);
+		ft_putnbr_fd(n % 10, fd);
+	}
+	return ;
 }
+/*
+int main(void)
+{
+	ft_putnbr_fd(4, 1);
+	return 0;
+}*/

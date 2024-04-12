@@ -3,37 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
+/*   By: slegaris <slegaris@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
-/*   Updated: 2024/02/12 11:51:58 by ismherna         ###   ########.fr       */
+/*   Created: 2023/03/08 18:47:54 by slegaris          #+#    #+#             */
+/*   Updated: 2023/03/21 17:47:24 by slegaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-//#include <stdio.h>
+#include <stdlib.h>
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	size_t	i;
+	unsigned int	i;
+	unsigned char	*d1;
+	unsigned char	*s2;
 
+	d1 = (unsigned char *)dst;
+	s2 = (unsigned char *)src;
 	i = 0;
-	if (!dst && !src)
-		return (0);
+	if (d1 == NULL && s2 == NULL)
+		return (dst);
 	while (i < n)
 	{
-		((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
+		d1[i] = s2[i];
 		i++;
 	}
 	return (dst);
 }
-/*int		main(){
-
-	char	destino[] = "hola";
-	char	origen[] = "mundo";
-	size_t	t = 5; 
-
-	void	*resultado = ft_memcpy(destino, origen, t);
-	printf("la cadena resultante es: %s", resultado); 
-	return 0; 
-}*/

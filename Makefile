@@ -5,14 +5,15 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/03/22 15:48:04 by ismherna          #+#    #+#              #
-#    Updated: 2024/03/22 12:40:17 by ismherna         ###   ########.fr        #
+#    Created: 2024/04/12 18:51:02 by ismherna          #+#    #+#              #
+#    Updated: 2024/04/12 18:56:42 by ismherna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
 
 SRC_DIR = src
+INC_DIR = includes
 
 SRCS = $(SRC_DIR)/main.c\
        $(SRC_DIR)/colors.c\
@@ -24,8 +25,8 @@ SRCS = $(SRC_DIR)/main.c\
        $(SRC_DIR)/hooks.c\
        $(SRC_DIR)/mandelbrot.c\
        $(SRC_DIR)/julia.c\
-       $(SRC_DIR)/parse.c\
-	   
+       $(SRC_DIR)/parse.c
+
 OBJS = $(SRCS:.c=.o)
 
 LIBFT = libft
@@ -35,7 +36,7 @@ MLX = mlx
 MLX_LIB = $(MLX)/libmlx.a
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -Imlx
+CFLAGS = -Wall -Wextra -Werror -I$(INC_DIR) -Imlx
 MINILIBX = -Imlx -lmlx -framework OpenGL -framework AppKit
 
 LDFLAGS = -fsanitize=address
@@ -43,46 +44,35 @@ LDFLAGS = -fsanitize=address
 all: $(NAME)
 
 $(NAME): $(LIBFT_LIB) $(MLX_LIB) $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT) -L$(MLX) -lft $(MINILIBX) -o $(NAME) >/dev/null 2>&1
- 
- 
- █
-	@echo "	       "
-	@echo "	"
-	@echo "	"
-	@echo ""
-	@echo ""
-	@echo ""
-	@echo ""
-	@echo ""
-	@echo ""
-	@echo "			\033[0;36mCompilation of $(NAME) completed!\033[0m"
+	@$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT) -L$(MLX) -lft $(MINILIBX) -o $(NAME)
+	@echo "\033[0;36mCompilation of $(NAME) completed!\033[0m"
 
-
-
-▒░▒ 
- █
 $(LIBFT_LIB):
 	@echo "Compiling Libft..."
-	@make -C $(LIBFT) >/dev/null 2>&1
-	@echo "\033[0;32mdone\033[0m"
+	@make -C $(LIBFT)
+	@echo "\033[0;32mLibft compilation complete.\033[0m"
 
 $(MLX_LIB):
 	@echo "Compiling minilibx..."
-	@make -C $(MLX) >/dev/null 2>&1
-	@echo "\033[0;32mdone\033[0m"
+	@make -C $(MLX)
+	@echo "\033[0;32mMinilibx compilation complete.\033[0m"
 
 .c.o:
-	@ $(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
+
+norm:
+	@norminette $(SRCS) $(INC_DIR)
 
 clean:
-	make -C $(LIBFT) clean
-	make -C $(MLX) clean
-	rm -f $(OBJS)
+	@make -C $(LIBFT) clean
+	@make -C $(MLX) clean
+	@rm -f $(OBJS)
+	@echo "\033[0;33mObject files removed.\033[0m"
 
 fclean: clean
-	make -C $(LIBFT) fclean
-	rm -f $(NAME)
+	@make -C $(LIBFT) fclean
+	@rm -f $(NAME)
+	@echo "\033[0;33mExecutable removed.\033[0m"
 
 re: fclean all
 
@@ -90,4 +80,4 @@ asan: CC += $(LDFLAGS)
 asan: CFLAGS += -g3
 asan: re
 
-.PHONY: all clean fclean re asan
+.PHONY: all clean fclean re asan norm

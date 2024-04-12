@@ -1,54 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                           :+:      :+:    :+:*/
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
+/*   By: slegaris <slegaris@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
-/*   Updated: 2024/02/20 10:08:00 by ismherna         ###   ########.fr       */
+/*   Created: 2023/03/09 13:55:36 by slegaris          #+#    #+#             */
+/*   Updated: 2023/03/24 18:07:36 by slegaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+#include <stdlib.h>
 #include "libft.h"
-//#include <stdio.h>
+
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	i;
-	char	*str;
-	size_t	max_len;
+	char			*dest;
+	unsigned int	i;
 
-	if (!s || start > ft_strlen(s))
-		return (ft_strdup(""));
-	max_len = ft_strlen(s) - start;
-	if (len > max_len)
-		len = max_len;
-	str = (char *)malloc(sizeof(*s) * (len + 1));
-	if (!str)
+	if (!s)
+		return (NULL);
+	if (start >= ft_strlen(s))
+		len = 0;
+	else if (len > ft_strlen(s + start))
+		len = ft_strlen(s + start);
+	dest = (char *)malloc((len + 1) * sizeof(char));
+	if (!dest)
 		return (NULL);
 	i = 0;
-	while (i < len)
+	while (i < len && s[start + i] != '\0')
 	{
-		str[i] = s[start + i];
+		dest[i] = s[start + i];
 		i++;
 	}
-	str[i] = '\0';
-	return (str);
+	dest[i] = '\0';
+	return (dest);
 }
-/*int		main(){
-
-	const	char *stringI = "hola muundo";
-	unsigned int   startI = 5;
-	size_t		lenI = 6;
-
-	char	*subcadena = ft_substr(stringI, startI, lenI);
-
-	if(subcadena){
-		printf("\n%s\n", subcadena);
-		free(subcadena);
-		}else {
-			printf("ERROR CADENA NO VALIDA");
-
-	}
-	return 0;
-}*/
+// int	main(void)
+// {
+// 	char *bro = ft_substr("", 3, 4);
+// 	printf("%s\n", bro);
+// 	// free(bro);
+// 	// system("leaks a.out");
+// 	return (0);
+// }

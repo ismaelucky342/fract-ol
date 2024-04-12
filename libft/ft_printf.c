@@ -3,82 +3,123 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
+/*   By: slegaris <slegaris@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/27 09:35:46 by ismherna          #+#    #+#             */
-/*   Updated: 2024/03/01 00:30:59 by ismherna         ###   ########.fr       */
+/*   Created: 2023/05/22 17:58:40 by slegaris          #+#    #+#             */
+/*   Updated: 2023/10/17 23:38:51 by slegaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_printf.h"
 
-static int	ft_format(va_list argument, const char word);
+#include "libft.h"
 
-int	ft_printf(const char *str, ...)
+static int	ft_charcheck(char c, va_list args)
 {
-	int		i;
-	int		size;
-	va_list	argument;
+	if (c == 'c')
+		return (ft_putchar_p(va_arg(args, int)));
+	if (c == 's')
+		return (ft_putstr_p(va_arg(args, char *)));
+	if (c == 'p')
+		return (ft_putptr_p(va_arg(args, void *)));
+	if (c == 'd')
+		return (ft_putnbr_p(va_arg(args, int)));
+	if (c == 'i')
+		return (ft_putnbr_p(va_arg(args, int)));
+	if (c == 'u')
+		return (ft_putnbr_unsg_p(va_arg(args, int)));
+	if (c == 'x')
+		return (ft_putnbrhex_minus_p(va_arg(args, int)));
+	if (c == 'X')
+		return (ft_putnbrhex_mayus_p(va_arg(args, int)));
+	if (c == '%')
+		return (ft_putchar_p('%'));
+	return (0);
+}
+
+static int	ft_formatcheck(char *str, va_list args)
+{
+	int	i;
+	int	length;
 
 	i = 0;
-	size = 0;
-	va_start(argument, str);
-	while (str[i])
+	length = 0;
+	while (str[i] != '\0')
 	{
-		if (str[i] == '%')
+		if (str[i] != '%' && (i == 0 || str[i - 1] != '%'))
 		{
-			size += ft_format(argument, str[i + 1]);
+			length += ft_putchar_p(str[i]);
 			i++;
 		}
+		else if (str[i] == '%' && str[i + 1] != '\0')
+		{
+			length += ft_charcheck(str[i + 1], args);
+			i += 2;
+		}
 		else
-			size += ft_print_char(str[i]);
-		i++;
+		{
+			length += ft_putchar_p(str[i]);
+			i++;
+		}
 	}
-	va_end(argument);
-	return (size);
+	return (length);
 }
 
-static int	ft_format(va_list argument, const char word)
+int	ft_printf(char const *format, ...)
 {
-	int	size;
+	va_list	args;
+	int		length;
 
-	size = 0;
-	if (word == 'c')
-		size += ft_print_char(va_arg(argument, int));
-	else if (word == 's')
-		size += ft_print_str(va_arg(argument, char *));
-	else if (word == 'p')
-		size += ft_print_pointer(va_arg(argument, unsigned long long));
-	else if (word == 'd' || word == 'i')
-		size += ft_print_number(va_arg(argument, int));
-	else if (word == 'u')
-		size += ft_print_unsigned(va_arg(argument, unsigned int));
-	else if (word == 'x' || word == 'X')
-		size += ft_print_hex(va_arg(argument, unsigned int), word);
-	else
-		size += ft_print_char(word);
-	return (size);
+	va_start(args, format);
+	length = ft_formatcheck((char *)format, args);
+	va_end(args);
+	return (length);
 }
-/*#include "ft_printf.h"
 
-
-int main() {
-    char caracter = 'A';
-    char cadena[] = "Hola, mundo!";
-    void *puntero = (void *)0x12345678;
-    int entero = 42;
-    unsigned int sin_signo = 123;
-    int hexadecimal = 0xABCD;
-
-    // Prueba de diferentes formatos de impresión
-    ft_printf("Caracter: %c\n", caracter);
-    ft_printf("Cadena: %s\n", cadena);
-    ft_printf("Puntero: %p\n", puntero);
-    ft_printf("Decimal: %d\n", entero);
-    ft_printf("Entero: %i\n", entero);
-    ft_printf("Sin signo: %u\n", sin_signo);
-    ft_printf("Hexadecimal (minúsculas): %x\n", hexadecimal);
-    ft_printf("Hexadecimal (mayúsculas): %X\n", hexadecimal);
-    ft_printf("Símbolo del porcentaje: %%\n");
-
-    return 0;
-}*/
+// int main()
+// {
+// 	// // Printing a character
+// 	// char c = 'A';
+// 	// ft_printf("The character is: %c\n", c);
+// 	// printf("The character is: %c\n", c);
+// 	// printf("%d\n", ft_printf("The character is: %c\n", c));
+//
+// 	// Printing a string
+// 	// char *str = "Hello, world!";
+// 	// ft_printf("%s\n", (char *)NULL);
+// 	// printf("%s\n", (char *)NULL);
+//
+// 	// // Printing a pointer
+// 	// char *p = &c;
+// 	// ft_printf("The pointer is: %p\n", p);
+// 	// printf("The pointer is: %p\n", p);
+// 	//
+// 	// Printing a decimal number
+// 	int d = INT_MIN;
+// 	ft_printf("The decimal number is: %d\n", d);
+// 	printf("The decimal number is: %d\n", d);
+// 	//
+// 	// // Printing an integer
+// 	// int i = 5678;
+// 	// ft_printf("The integer is: %i\n", i);
+// 	// printf("The integer is: %i\n", i);
+// 	//
+// 	// // Printing an unsigned number
+// 	// unsigned int u = 1234567890;
+// 	// ft_printf("The unsigned number is: %u\n", u);
+// 	// printf("The unsigned number is: %u\n", u);
+// 	//
+	// Printing a hexadecimal number (lowercase)
+	// int x = -10;
+	// ft_printf("%x\n", x);
+	// printf("%x\n", x);
+// 	//
+// 	// // Printing a hexadecimal number (uppercase)
+// 	// int X = 0xABC;
+// 	// ft_printf("The hexadecimal number (uppercase) is: %X\n", X);
+// 	// printf("The hexadecimal number (uppercase) is: %X\n", X);
+// 	//
+// 	// // Printing a percentage symbol
+// 	// ft_printf("The percentage symbol is: %%\n");
+// 	// printf("The percentage symbol is: %%\n");
+//
+// 	return 0;
+// }

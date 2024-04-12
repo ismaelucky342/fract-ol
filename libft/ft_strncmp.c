@@ -3,34 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
+/*   By: slegaris <slegaris@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
-/*   Updated: 2024/02/12 11:51:58 by ismherna         ###   ########.fr       */
+/*   Created: 2023/03/08 16:38:39 by slegaris          #+#    #+#             */
+/*   Updated: 2023/03/08 18:29:42 by slegaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 //#include <stdio.h>
+
 int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
 	unsigned int	i;
+	unsigned char	*f1;
+	unsigned char	*f2;
 
+	f1 = (unsigned char *) s1;
+	f2 = (unsigned char *) s2;
 	i = 0;
-	while (i < n)
+	while (f1[i] && f2[i] && i < n)
 	{
-		if (s1[i] == '\0' || s2[i] == '\0' || s1[i] != s2[i])
-			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		if (f1[i] != f2[i])
+			return (f1[i] - f2[i]);
 		i++;
 	}
-	return (0);
+	if (i == n)
+		return (0);
+	return (f1[i] - f2[i]);
 }
-/*int		main()
+/*
+int	main(void)
 {
-	char	string1[] = "hola";
-	char	string2[] = "hole";
-	
-	int		resultado = ft_strncmp(string1,string2, 5);
-	printf("el resultado es: %d\n", resultado);
-	return 0; 
+	char *s1 = "  Buenosdias";
+	char *s2 = "  Buenos";
+	unsigned int n = -3;
+
+	printf("%d\n", ft_strncmp(s1, s2, n));
+	return 0;
 }*/

@@ -3,33 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
+/*   By: slegaris <slegaris@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
-/*   Updated: 2024/02/15 10:56:17 by ismherna         ###   ########.fr       */
+/*   Created: 2023/03/08 01:11:25 by slegaris          #+#    #+#             */
+/*   Updated: 2024/03/06 19:11:40 by slegaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-//#include <stdio.h>
 
 int	ft_tolower(int c)
 {
 	if (c >= 'A' && c <= 'Z')
 	{
-		return (c + 32);
-	}
-	else
-	{
+		c = c + 32;
 		return (c);
 	}
+	return (c);
 }
-/*int		main()
+/*
+int main(void)
 {
-	char	ch = 'A'; 
-	
-	int lowerch = ft_tolower(ch); 
-
-	printf("%c\n", lowerch);
-
+	printf("%c\n", ft_tolower('A'));
 	return 0;
 }*/

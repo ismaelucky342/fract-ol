@@ -3,35 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
+/*   By: slegaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
-/*   Updated: 2024/02/12 11:51:58 by ismherna         ###   ########.fr       */
+/*   Created: 2023/03/11 22:21:51 by slegaris          #+#    #+#             */
+/*   Updated: 2023/03/11 22:26:57 by slegaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-//#include <stdio.h>
+#include <stdlib.h>
+
 char	*ft_strdup(const char *s1)
 {
-	size_t	len;
-	char	*duplicate;
+	int		i;
+	char	*s2;
 
-	len = ft_strlen(s1) + 1;
-	duplicate = (char *)malloc(len);
-	if (duplicate == NULL)
-	{
+	i = 0;
+	s2 = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 1));
+	if (s2 == NULL)
 		return (NULL);
+	while (s1[i])
+	{
+		s2[i] = s1[i];
+		i++;
 	}
-	ft_memcpy(duplicate, s1, len);
-	return (duplicate);
+	s2[i] = 0;
+	return (s2);
 }
-
-/*int		main()
-{
-	const char *string1 = "hola mundo"; 
-
-	char	*resultado = ft_strdup(string1); 
-	printf("la original es: %s\n y la duplicada: %s\n ",string1, resultado);
-	return 0; 
-}*/

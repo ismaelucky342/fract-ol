@@ -3,41 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
+/*   By: slegaris <slegaris@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
-/*   Updated: 2024/02/20 10:09:51 by ismherna         ###   ########.fr       */
+/*   Created: 2023/03/08 23:50:30 by slegaris          #+#    #+#             */
+/*   Updated: 2023/03/14 00:53:42 by slegaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 //#include <stdio.h>
-char	*ft_strrchr(const char *str, int c)
-{
-	int	i;
+#include "libft.h"
 
-	i = 0;
-	while (str[i])
-		i++;
+char	*ft_strrchr(const char *s, int c)
+{
+	int		i;
+
+	i = ft_strlen(s);
 	while (i >= 0)
 	{
-		if (str[i] == (char)c)
-			return ((char *)(str + i));
+		if ((unsigned char)s[i] == (unsigned char)c)
+			return ((char *)&s[i]);
 		i--;
 	}
-	return (NULL);
-}
-/*int		main(){
-	const	char *string1 = "fsdahsa";
-	int		byte =  'a';
-
-	char	*ultimaAparicion = ft_strrchr(string1, byte);
-
-	if(ultimaAparicion){
-		printf("Caracter %s encontrado en posicion %i", ultimaAparicion, ultimaAparicion-string1);
-
-	}else {
-		printf("ERROR");
-	}
+	if (c == 0)
+		return ((char *)&s[i]);
 	return (0);
+}
+/*
+int	main(void)
+{
+	char *s = "testabcd";
+	int c = 0;
+
+	printf("%s\n", ft_strrchr(s, c));
+	return 0;
 }*/

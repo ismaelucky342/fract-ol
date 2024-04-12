@@ -3,16 +3,56 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
+/*   By: slegaris <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
-/*   Updated: 2024/02/12 11:51:58 by ismherna         ###   ########.fr       */
+/*   Created: 2023/03/23 15:50:11 by slegaris          #+#    #+#             */
+/*   Updated: 2023/03/24 18:10:49 by slegaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-//#include <stdio.h>
-static int	wordlen(const char *s, char c)
+#include <stddef.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+static void	flyingfree(char **s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		free(s[i]);
+		i++;
+	}
+	free(s);
+}
+
+static int	indexword(char *s, char c)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (*s)
+	{
+		if (*s != c)
+		{
+			if (!j)
+			{
+				j = 1;
+				i++;
+			}
+		}
+		else
+			j = 0;
+		s++;
+	}
+	return (i);
+}
+
+static int	wordlen(char *s, char c)
 {
 	int	len;
 
@@ -25,78 +65,46 @@ static int	wordlen(const char *s, char c)
 	return (len);
 }
 
-static int	countwords(const char *s, char c)
-{
-	int	count;
-
-	count = 0;
-	while (*s)
-	{
-		if (*s != c)
-		{
-			count++;
-			s += wordlen(s, c);
-		}
-		else
-			s++;
-	}
-	return (count);
-}
-
-static void	*free_strs(char**strs)
-{
-	int	i;
-
-	i = 0;
-	while (strs[i])
-		free(strs[i++]);
-	free(strs);
-	return (NULL);
-}
-
 char	**ft_split(char const *s, char c)
 {
-	char	**strs;
+	char	**words;
+	int		word_count;
 	int		i;
-	int		count ;
 
 	if (!s)
 		return (NULL);
-	count = countwords(s, c);
-	strs = malloc(sizeof(char *) * (count + 1));
-	if (!strs)
+	word_count = indexword((char *)s, c);
+	words = (char **)ft_calloc(word_count + 1, sizeof(char *));
+	if (!words)
 		return (NULL);
-	strs[count] = NULL;
 	i = 0;
 	while (*s)
 	{
 		if (*s != c)
 		{
-			strs[i] = ft_substr(s, 0, wordlen(s, c));
-			if (!strs[i++])
-				return (free_strs(strs));
-			s += wordlen(s, c);
+			words[i] = ft_substr(s, 0, wordlen((char *)s, c));
+			if (!words[i])
+				return (flyingfree(words), NULL);
+			s += wordlen((char *)s, c);
+			i++;
 		}
 		else
 			s++;
 	}
-	return (strs);
+	return (words);
 }
-/*int		main()
-{
-	const	char *string1 = "hola me llamo ismael";
-	char	c = ' '; 
-	int i = 0; 
-
-	char	**resultado = ft_split(string1, c);
-
-	while(resultado[i] != '\0')
-	{
-		printf("%s", resultado[i]);
-		free(resultado[i]);
-		i++;
-	}
-	free(resultado);
-	
-	return 0; 
-}*/
+//
+// int main(void)
+// {
+// 	char **result;
+// 	int i;
+//
+// 	result = ft_split("Hello, how are you?", ' ');
+// 	for (i = 0; result[i] != NULL; i++)
+// 		printf("Word %d: %s\n", i + 1, result[i]);
+// 	for (i = 0; result[i] != NULL; i++)
+// 		free(result[i]);
+// 	// free(result);
+// 	system("leaks a.out");
+// 	return (0);
+// }

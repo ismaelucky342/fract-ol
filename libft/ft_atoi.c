@@ -3,58 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
+/*   By: slegaris <slegaris@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
-/*   Updated: 2024/02/12 11:46:38 by ismherna         ###   ########.fr       */
+/*   Created: 2023/03/08 12:20:14 by slegaris          #+#    #+#             */
+/*   Updated: 2023/03/21 18:43:29 by slegaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdio.h>
-
 int	ft_atoi(const char *str)
 {
-	int	num;
-	int	sign;
 	int	i;
+	int	n;
+	int	s;
 
-	num = 0;
-	sign = 1;
 	i = 0;
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
-		|| str[i] == '\f' || str[i] == '\r')
-		i++;
-	if (str[i] == '+' || str[i] == '-')
+	n = 0;
+	s = 1;
+	while (str[i] == '\n' || str[i] == '\v' || str[i] == '\f'
+		|| str[i] == '\r' || str[i] == ' ' || str[i] == '\t')
 	{
-		if (str[i] == '-')
-			sign = -1;
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
+	if (str[i] == '-')
 	{
-		num = num * 10 + (str[i] - '0');
+		s = -1;
 		i++;
 	}
-	return (num * sign);
+	else if (str[i] == '+')
+		i++;
+	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
+	{
+		n = n * 10 + (str[i] - '0');
+		i++;
+	}
+	return (s * n);
 }
-
-/*int		main()
+/*
+int main()
 {
-	
-    const char *str1 = "123";
-    const char *str2 = "-456";
-    const char *str3 = "   789";
-    const char *str4 = "   +987";
-    const char *str5 = "   -654";
-    const char *str6 = "   123abc";
-
-    printf("'%s' convertido a entero: %d\n", str1, ft_atoi(str1));
-    printf("'%s' convertido a entero: %d\n", str2, ft_atoi(str2));
-    printf("'%s' convertido a entero: %d\n", str3, ft_atoi(str3));
-    printf("'%s' convertido a entero: %d\n", str4, ft_atoi(str4));
-    printf("'%s' convertido a entero: %d\n", str5, ft_atoi(str5));
-    printf("'%s' convertido a entero: %d\n", str6, ft_atoi(str6));
-
-    return 0;
+	printf("%i\n", ft_atoi("20000000000"));
+	printf("%i\n", ft_atoi("     ------+++++---12341"));
+	printf("%i\n", ft_atoi("     ------+++++---123413"));
+	printf("%i\n", ft_atoi("00000000002147483647"));
+	printf("%i\n", ft_atoi("-2147483648"));
+	printf("%i\n", ft_atoi("a"));
 }*/

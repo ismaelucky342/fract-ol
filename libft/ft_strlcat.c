@@ -3,57 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
+/*   By: slegaris <slegaris@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
-/*   Updated: 2024/02/12 11:51:58 by ismherna         ###   ########.fr       */
+/*   Created: 2023/03/09 15:37:23 by slegaris          #+#    #+#             */
+/*   Updated: 2023/03/21 16:14:49 by slegaris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 //#include <stdio.h>
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
-{
-	size_t	i;
-	size_t	j;
-	size_t	dst_len;
-	size_t	src_len;
+#include <stdlib.h>
+#include "libft.h"
 
-	dst_len = ft_strlen(dst);
-	src_len = ft_strlen(src);
-	i = 0;
-	while (i < size && dst[i] != '\0')
-		i++;
-	if (i == size)
-		return (size + src_len);
-	j = 0;
-	while (src[j] && i + j + 1 < size)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+{
+	size_t	c;
+	size_t	d;
+
+	if (!dstsize && !dst)
+		return (0);
+	if (dstsize <= ft_strlen(dst))
+		return (dstsize + ft_strlen(src));
+	c = ft_strlen(dst);
+	d = 0;
+	while (src[d] != '\0' && c + 1 < dstsize)
 	{
-		dst[i + j] = src[j];
-		j++;
+		dst[c] = src[d];
+		c++;
+		d++;
 	}
-	if (i < size)
-	{
-		dst[i + j] = '\0';
-	}
-	else if (size > 0)
-		dst[size - 1] = '\0';
-	return (dst_len + src_len);
+	dst[c] = '\0';
+	return (ft_strlen(dst) + ft_strlen(&src[d]));
 }
-/*int 	main()
+/*
+int	main(void)
 {
-	const	char *origen = "hola";
-	char 		 destino[20] = " mundo";
-	
-
-	size_t	resultado = ft_strlcat(destino, origen, 20);
-	if(resultado)
-	{
-		printf("el resultado es: %zu\n", resultado);
-		printf("%s\n", destino);
-		
-	}else{
-		printf("ERROR CADENA NULA");
-	}
-	return 0; 
+	printf("%zu\n", ft_strlcpy("pqrs", "abcdefghi", 10));
+	return 0;
 }*/
