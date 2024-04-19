@@ -21,6 +21,7 @@ $> make
 $> ./fractol Mandelbrot
 $> ./fractol Julia
 $> ./fractol Burningship
+$> ./fractol S_Triangle
 ```
 ## Pictures
 ### Mandelbrot
