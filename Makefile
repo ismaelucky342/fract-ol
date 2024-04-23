@@ -1,83 +1,89 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/04/12 18:51:02 by ismherna          #+#    #+#              #
-#    Updated: 2024/04/12 18:56:42 by ismherna         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+#Program name
+NAME	= fractol
 
-NAME = fractol
+# Compiler
+CC		= gcc
+CFLAGS	= -Werror -Wextra -Wall
 
-SRC_DIR = src
-INC_DIR = includes
+# Minilibx
+MLX_PATH	= mlx/
+MLX_NAME	= libmlx.a
+MLX			= $(MLX_PATH)$(MLX_NAME)
 
-SRCS = $(SRC_DIR)/main.c\
-       $(SRC_DIR)/colors.c\
-       $(SRC_DIR)/defaults.c\
-       $(SRC_DIR)/keys.c\
-       $(SRC_DIR)/presets.c\
-       $(SRC_DIR)/palette.c\
-       $(SRC_DIR)/mlx.c\
-       $(SRC_DIR)/hooks.c\
-       $(SRC_DIR)/mandelbrot.c\
-       $(SRC_DIR)/julia.c\
-       $(SRC_DIR)/parse.c
+# Libft
+LIBFT_PATH	= libft/
+LIBFT_NAME	= libft.a
+LIBFT		= $(LIBFT_PATH)$(LIBFT_NAME)
 
-OBJS = $(SRCS:.c=.o)
+# Includes
+INC			=	-I ./includes/\
+				-I ./libft/\
+				-I ./mlx/
 
-LIBFT = libft
-LIBFT_LIB = $(LIBFT)/libft.a
+# Sources
+SRC_PATH	=	src/
+SRC			=	fractol.c \
+				initialization.c \
+				utils.c \
+				events.c \
+				render.c \
+				color.c \
+				parse_args.c \
+				help_msg.c \
+				fractal_sets/mandelbrot.c \
+				fractal_sets/julia.c \
+				fractal_sets/burning_ship.c \
+				fractal_sets/tricorn.c \
+				fractal_sets/mandelbox.c \
+				color_schemes/color_interpolated.c \
+				color_schemes/color_special.c \
+				color_schemes/color_striped.c
+SRCS		= $(addprefix $(SRC_PATH), $(SRC))
 
-MLX = mlx
-MLX_LIB = $(MLX)/libmlx.a
+# Objects
+OBJ_PATH	= obj/
+OBJ			= $(SRC:.c=.o)
+OBJS		= $(addprefix $(OBJ_PATH), $(OBJ))
 
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -I$(INC_DIR) -Imlx
-MINILIBX = -Imlx -lmlx -framework OpenGL -framework AppKit
+all: $(MLX) $(LIBFT) $(NAME)
 
-LDFLAGS = -fsanitize=address
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c
+	@$(CC) $(CFLAGS) -c $< -o $@ $(INC)
 
-all: $(NAME)
+$(OBJS): $(OBJ_PATH)
 
-$(NAME): $(LIBFT_LIB) $(MLX_LIB) $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT) -L$(MLX) -lft $(MINILIBX) -o $(NAME)
-	@echo "\033[0;36mCompilation of $(NAME) completed!\033[0m"
+$(OBJ_PATH):
+	@mkdir $(OBJ_PATH)
+	@mkdir $(OBJ_PATH)fractal_sets/
+	@mkdir $(OBJ_PATH)color_schemes/
 
-$(LIBFT_LIB):
-	@echo "Compiling Libft..."
-	@make -C $(LIBFT)
-	@echo "\033[0;32mLibft compilation complete.\033[0m"
+$(MLX):
+	@echo "Making MiniLibX..."
+	@make -sC $(MLX_PATH) 2>/dev/null
 
-$(MLX_LIB):
-	@echo "Compiling minilibx..."
-	@make -C $(MLX)
-	@echo "\033[0;32mMinilibx compilation complete.\033[0m"
 
-.c.o:
-	@$(CC) $(CFLAGS) -c $< -o $@
+$(LIBFT):
+	@echo "Making libft..."
+	@make -sC $(LIBFT_PATH)
 
-norm:
-	@norminette $(SRCS) $(INC_DIR)
+$(NAME): $(OBJS)
+	@echo "Compiling fractol..."
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(MLX) $(LIBFT) $(INC) -lXext -lX11 -lm
+	@echo "Fractol ready."
+
+bonus: all
 
 clean:
-	@make -C $(LIBFT) clean
-	@make -C $(MLX) clean
-	@rm -f $(OBJS)
-	@echo "\033[0;33mObject files removed.\033[0m"
+	@echo "Removing .o object files..."
+	@rm -rf $(OBJ_PATH)
+	@make clean -C $(MLX_PATH)
+	@make clean -C $(LIBFT_PATH)
 
 fclean: clean
-	@make -C $(LIBFT) fclean
+	@echo "Removing fractol..."
 	@rm -f $(NAME)
-	@echo "\033[0;33mExecutable removed.\033[0m"
+	@rm -f $(LIBFT_PATH)$(LIBFT_NAME)
 
 re: fclean all
 
-asan: CC += $(LDFLAGS)
-asan: CFLAGS += -g3
-asan: re
-
-.PHONY: all clean fclean re asan norm
+.PHONY: all re clean fclean
