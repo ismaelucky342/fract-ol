@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 13:01:37 by ismherna          #+#    #+#             */
-/*   Updated: 2024/04/24 14:12:07 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/04/24 16:02:01 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	print_controls(void)
 void	help_msg(t_fractol *f)
 {
 	ft_putendl_fd("\n+====================================================+", 1);
-	ft_putendl_fd("|                     FRACT'OL                       |", 1);
+	ft_putendl_fd("|                   ISMHERNA FRACT'OL                  |", 1);
 	ft_putendl_fd("+====================================================+\n", 1);
 	print_fractal_options();
 	print_color_options();
