@@ -3,38 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcombeau <mcombeau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/25 22:41:23 by mcombeau          #+#    #+#             */
-/*   Updated: 2021/12/02 16:51:42 by mcombeau         ###   ########.fr       */
+/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
+/*   Updated: 2024/02/13 03:08:46 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-/*
-	DESCRIPTION :
-	The function ft_memcmp compares the first n bytes of the memory areas
-	s1 and s2. The bytes are interpreted as unsigned char.
-
-	RETURN VALUE :
-	An integer less than, equal to, or greater than zero if the first
-	n bytes of s1 is found to be less than, equal to, or greater than the 
-	first n bytes of s2. Zero if n is equal to zero.
-*/
-
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+//#include <stdio.h>
+int	ft_memcmp(const void *dst, const void *str, size_t n)
 {
-	const char	*str1;
-	const char	*str2;
-	size_t		i;
+	unsigned char	*str2;
+	unsigned char	*dst2;
 
-	if (n == 0)
-		return (0);
-	str1 = (const char *)s1;
-	str2 = (const char *)s2;
-	i = 0;
-	while ((i < n - 1) && str1[i] == str2[i])
-		i++;
-	return ((unsigned char)str1[i] - (unsigned char)str2[i]);
+	dst2 = (unsigned char *)dst;
+	str2 = (unsigned char *)str;
+	if (n)
+		while (n--)
+			if (*dst2++ != *str2++)
+				return (*(--dst2) - *(--str2));
+	return (0);
 }
+
+/*int		main(){
+
+	const char *destino = "holaa";
+	const char *origen = "holap";
+
+	int		resultado = ft_memcmp(destino, origen, 5);
+    if (resultado != 0) {
+        printf("Strings are different, and the difference is: %d\n", resultado);
+    } else {
+        printf("Strings are identical\n");
+    }
+	return 0; 
+}*/

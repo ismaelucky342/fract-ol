@@ -3,47 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcombeau <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 15:57:19 by mcombeau          #+#    #+#             */
-/*   Updated: 2021/12/02 16:48:38 by mcombeau         ###   ########.fr       */
+/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
+/*   Updated: 2024/02/12 11:51:58 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+//#include <stdio.h>
 
-/*
-	DESCRIPTION :
-	The function ft_memmove copies n bytes from memory area src to memory
-	area dst. The memory areas may overlap: if the dst pointer is found
-	to be between the src pointer and the index n, copying will be done
-	back to front to prevent data being modified before being copied.
-	Otherwise it will be done front to back	to preserve data.
-
-	RETURN VALUE :
-	A pointer to dst.
-*/
-
-void	*ft_memmove(void *dst, const void *src, size_t len)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	char		*dp;
-	const char	*sp;
+	unsigned char		*dest_cpy;
+	const unsigned char	*src_cpy;
 
-	if (src == dst)
-		return (dst);
-	dp = (char *)dst;
-	sp = (const char *)src;
-	if (sp < dp && sp + len > dp)
-		while (len--)
-			*(dp + len) = *(sp + len);
+	if (dest == NULL && src == NULL)
+		return (NULL);
+	dest_cpy = (unsigned char *)dest;
+	src_cpy = (const unsigned char *)src;
+	if (dest <= src)
+	{
+		while (n--)
+			*dest_cpy++ = *src_cpy++;
+	}
 	else
 	{
-		while (len--)
-		{
-			*dp = *sp;
-			sp++;
-			dp++;
-		}
+		dest_cpy += n;
+		src_cpy += n;
+		while (n--)
+			*--dest_cpy = *--src_cpy;
 	}
-	return (dst);
+	return (dest);
 }
+/*int		main(){
+
+	char	destino[] = "abcde";
+	char	origen[] = "poiss";
+	size_t	t = 5; 
+
+	void	*resultado = ft_memmove(destino, origen, t);
+	printf("la cadena resultante es: %s", (char *)resultado); 
+	return 0; 
+}*/

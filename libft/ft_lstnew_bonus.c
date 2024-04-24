@@ -3,33 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcombeau <mcombeau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/30 17:28:58 by mcombeau          #+#    #+#             */
-/*   Updated: 2021/12/02 15:13:17 by mcombeau         ###   ########.fr       */
+/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
+/*   Updated: 2024/02/12 11:51:58 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
-
-/*
-	DESCRIPTION :
-	The function ft_lstnew allocates memory for a new list node and 
-	initializes its content to the value passed as parameter, before
-	setting its next node to NULL. 
-
-	RESULT VALUE :
-	The new list ode.
-*/
-
+//#include<stdio.h>
 t_list	*ft_lstnew(void *content)
 {
-	t_list	*list;
+	t_list	*new_node;
 
-	list = malloc(sizeof(t_list));
-	if (!list)
+	new_node = (t_list *)malloc(sizeof(t_list));
+	if (!new_node)
 		return (NULL);
-	list->content = content;
-	list->next = NULL;
-	return (list);
+	new_node->content = content;
+	new_node->next = (NULL);
+	return (new_node);
 }
+/*int		main(){
+	int data = 42;
+	t_list *nodo = ft_lstnew(&data); 
+
+	printf("nuevo nodo %d\n", *((int *)nodo->content));
+	free(nodo);
+	return 0; 
+}*/

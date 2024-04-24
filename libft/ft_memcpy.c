@@ -3,44 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcombeau <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 15:02:13 by mcombeau          #+#    #+#             */
-/*   Updated: 2021/12/02 15:26:40 by mcombeau         ###   ########.fr       */
+/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
+/*   Updated: 2024/02/12 11:51:58 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-/*
-	DESCRIPTION :
-	The function ft_memcpy copies n bytes from memory area src to memory
-	area dst.
-	Does not account for memory overlaps. Use ft_memmove if the memory areas
-	overlap or might overlap.
-
-	RETURN VALUE :
-	A pointer to dst. NULL if src and dst are both NULL.
-*/
+//#include <stdio.h>
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	char		*dp;
-	const char	*sp;
+	size_t	i;
 
+	i = 0;
 	if (!dst && !src)
 		return (0);
-	if (n == 0 || (dst == src))
-		return (dst);
-	dp = (char *)dst;
-	sp = (const char *)src;
-	while (n != 0)
+	while (i < n)
 	{
-		if (*dp != *sp)
-			*dp = *sp;
-		dp++;
-		sp++;
-		n--;
+		((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
+		i++;
 	}
 	return (dst);
 }
+/*int		main(){
+
+	char	destino[] = "hola";
+	char	origen[] = "mundo";
+	size_t	t = 5; 
+
+	void	*resultado = ft_memcpy(destino, origen, t);
+	printf("la cadena resultante es: %s", resultado); 
+	return 0; 
+}*/

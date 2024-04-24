@@ -3,33 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcombeau <mcombeau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/26 16:03:27 by mcombeau          #+#    #+#             */
-/*   Updated: 2021/12/02 15:58:22 by mcombeau         ###   ########.fr       */
+/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
+/*   Updated: 2024/02/12 11:51:58 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-/*
-	DESCRIPTION :
-	The function ft_strdup duplicates the given string s1 by allocating 
-	memory and performing a copy of the given string.
-
-	RETURN VALUE :
-	A pointer to the new string. NULL if the memory allocation fails.
-*/
-
+//#include <stdio.h>
 char	*ft_strdup(const char *s1)
 {
-	char	*s2;
 	size_t	len;
+	char	*duplicate;
 
 	len = ft_strlen(s1) + 1;
-	s2 = malloc(len * sizeof(char));
-	if (!s2)
+	duplicate = (char *)malloc(len);
+	if (duplicate == NULL)
+	{
 		return (NULL);
-	ft_strlcpy(s2, s1, len);
-	return (s2);
+	}
+	ft_memcpy(duplicate, s1, len);
+	return (duplicate);
 }
+
+/*int		main()
+{
+	const char *string1 = "hola mundo"; 
+
+	char	*resultado = ft_strdup(string1); 
+	printf("la original es: %s\n y la duplicada: %s\n ",string1, resultado);
+	return 0; 
+}*/

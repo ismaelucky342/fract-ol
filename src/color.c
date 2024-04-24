@@ -6,17 +6,12 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 17:25:43 by ismherna          #+#    #+#             */
-/*   Updated: 2024/03/12 11:53:54 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/04/24 14:13:11 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-/* color_shift_special:
-*	Extension of the color_shift function. Changes the color pattern.
-*	The fractal can then be rendered again with different color
-*	effects.
-*/
 static void	color_shift_special(t_fractol *f)
 {
 	int	alt_color;
@@ -36,11 +31,6 @@ static void	color_shift_special(t_fractol *f)
 			0x00FF00, 0x0000FF, 0x4B0082, 0x9400D3, 0xFFFFFF}, 8);
 }
 
-/* color_shift_striped:
-*	Extension of the color_shift function. Changes the color pattern.
-*	The fractal can then be rendered again with different color
-*	effects.
-*/
 static void	color_shift_striped(t_fractol *f)
 {
 	if (f->color_pattern == 2)
@@ -53,11 +43,6 @@ static void	color_shift_striped(t_fractol *f)
 		color_shift_special(f);
 }
 
-/* color_shift:
-*	Reinitializes the MLX image and changes the color pattern.
-*	The fractal can then be rendered again with different color
-*	effects.
-*/
 void	color_shift(t_fractol *f)
 {
 	int	alt_color;

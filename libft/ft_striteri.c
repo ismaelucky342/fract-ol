@@ -3,34 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcombeau <mcombeau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/28 05:10:58 by mcombeau          #+#    #+#             */
-/*   Updated: 2021/12/02 16:00:25 by mcombeau         ###   ########.fr       */
+/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
+/*   Updated: 2024/02/12 11:51:58 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+//#include <stdio.h>
 
-/*
-	DESCRIPTION :
-	The function ft_striteri applies the given function f to each
-	character in the given string s.
-
-	RETURN VALUE :
-	None.
-*/
-
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	int	i;
+	unsigned int	i;
 
 	if (!s || !f)
 		return ;
 	i = 0;
 	while (s[i])
 	{
-		(*f)(i, &s[i]);
+		f(i, &s[i]);
 		i++;
 	}
 }
+/*void	printchari(unsigned int i, char *c)
+{
+	printf("%u: %c\n", i, *c);
+}*/
+/*int		main()
+{
+	char	string1[] = "hola que tal";
+
+	printf("La cadena original es: %s\n",string1);
+	ft_striteri(string1, &printchari);
+
+	return 0; 
+}*/

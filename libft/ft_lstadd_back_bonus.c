@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcombeau <mcombeau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/30 22:10:05 by mcombeau          #+#    #+#             */
-/*   Updated: 2021/12/07 12:13:58 by mcombeau         ###   ########.fr       */
+/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
+/*   Updated: 2024/02/12 11:51:58 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-	DESCRIPTION :
-	The function ft_lstadd_front adds a new node to the front of a list:
-		[NEW]->[.]->[.]->[.]->[NULL]
-
-	RETURN VALUE :
-	None.
-*/
-
-void	ft_lstadd_front(t_list **alst, t_list *new)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	if (!new)
-		return ;
-	if (!*alst)
+	t_list	*last;
+
+	last = *lst;
+	if (!*lst)
 	{
-		*alst = new;
+		*lst = new;
 		return ;
 	}
-	new->next = *alst;
-	*alst = new;
+	while (last->next)
+		last = last->next;
+	last->next = new;
 }

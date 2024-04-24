@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspace.c                                       :+:      :+:    :+:   */
+/*   ft_char.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcombeau <mcombeau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/22 13:53:06 by mcombeau          #+#    #+#             */
-/*   Updated: 2022/04/17 15:51:23 by mcombeau         ###   ########.fr       */
+/*   Created: 2024/02/27 09:35:46 by ismherna          #+#    #+#             */
+/*   Updated: 2024/03/06 10:28:01 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "ft_printf.h"
 
-/*
-	DESCRIPTION :
-	The function ft_isspace checks whether c is a space character or not.
-
-	RETURN VALUE:
-	Non-zero if c is a space, zero if not.
-*/
-int	ft_isspace(int c)
+int	ft_print_char(int character)
 {
-	if ((c >= 9 && c <= 13) || c == ' ')
-		return (c);
-	return (0);
+	if (write (1, &character, 1) == -1)
+	{
+		return (-1);
+	}
+	return (1);
 }

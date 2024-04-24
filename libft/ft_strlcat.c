@@ -3,47 +3,57 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcombeau <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 15:14:19 by mcombeau          #+#    #+#             */
-/*   Updated: 2021/12/02 16:13:28 by mcombeau         ###   ########.fr       */
+/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
+/*   Updated: 2024/02/12 11:51:58 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-/*
-	DESCRIPTION :
-	The function ft_strlcat appends the given string src to the end of 
-	dst. It will append at most dstsize - ft_strlen(dst) - 1 and 
-	nul-terminate the result.
-
-	Note : space for the terminating \0 character must be included in dstsize.
-
-	RETURN VALUE :
-	The total length of the string that it tried to create : the initial
-	length of dst + the length of src, with the goal to facilitate
-	truncaction detection.
-*/
-
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+//#include <stdio.h>
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	size_t	i;
 	size_t	j;
-	size_t	d_size;
-	size_t	s_size;
+	size_t	dst_len;
+	size_t	src_len;
 
-	d_size = ft_strlen(dst);
-	s_size = ft_strlen(src);
-	if (dstsize <= d_size)
-		return (dstsize + s_size);
-	i = d_size;
+	dst_len = ft_strlen(dst);
+	src_len = ft_strlen(src);
+	i = 0;
+	while (i < size && dst[i] != '\0')
+		i++;
+	if (i == size)
+		return (size + src_len);
 	j = 0;
-	while ((i + j) < (dstsize - 1) && src[j] != '\0')
+	while (src[j] && i + j + 1 < size)
 	{
 		dst[i + j] = src[j];
 		j++;
 	}
-	dst[i + j] = '\0';
-	return (d_size + s_size);
+	if (i < size)
+	{
+		dst[i + j] = '\0';
+	}
+	else if (size > 0)
+		dst[size - 1] = '\0';
+	return (dst_len + src_len);
 }
+/*int 	main()
+{
+	const	char *origen = "hola";
+	char 		 destino[20] = " mundo";
+	
+
+	size_t	resultado = ft_strlcat(destino, origen, 20);
+	if(resultado)
+	{
+		printf("el resultado es: %zu\n", resultado);
+		printf("%s\n", destino);
+		
+	}else{
+		printf("ERROR CADENA NULA");
+	}
+	return 0; 
+}*/

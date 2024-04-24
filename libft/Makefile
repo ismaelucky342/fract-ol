@@ -3,89 +3,122 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mcombeau <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/11/22 13:48:30 by mcombeau          #+#    #+#              #
-#    Updated: 2021/12/02 13:26:19 by mcombeau         ###   ########.fr        #
+#    Created: 2024/02/22 15:48:04 by ismherna          #+#    #+#              #
+#    Updated: 2024/04/24 13:42:56 by ismherna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
-CC = gcc
-CFLAGS = -Wall -Werror -Wextra -g3
-AR = ar rcs
-SRC = ft_isalpha \
-	ft_isdigit \
-	ft_isalnum \
-	ft_isascii \
-	ft_isprint \
-	ft_isspace \
-	ft_ishexdigit \
-	ft_strlen \
-	ft_memset \
-	ft_bzero \
-	ft_memcpy \
-	ft_memmove \
-	ft_strlcpy \
-	ft_strlcat \
-	ft_toupper \
-	ft_tolower \
-	ft_strchr \
-	ft_strrchr \
-	ft_strncmp \
-	ft_memchr \
-	ft_memcmp \
-	ft_strnstr \
-	ft_atoi \
-	ft_calloc \
-	ft_strdup \
-	ft_substr \
-	ft_strjoin \
-	ft_strtrim \
-	ft_split \
-	ft_itoa \
-	ft_strmapi \
-	ft_striteri \
-	ft_putchar_fd \
-	ft_putstr_fd \
-	ft_putendl_fd \
-	ft_putnbr_fd
-BONUS_SRC = ft_lstnew \
-	ft_lstadd_front \
-	ft_lstsize \
-	ft_lstlast \
-	ft_lstadd_back \
-	ft_lstdelone \
-	ft_lstclear \
-	ft_lstiter \
-	ft_lstmap  
+NAME	=	libft.a
+INCLUDE	= 	pintf.h \
+			libft.h \
+			get_next_line_bonus.h \
+			get_next_line.h \
 
-SRCS = $(addsuffix .c, $(SRC))
-OBJS = $(addsuffix .o, $(SRC))
-BONUS_SRCS = $(addsuffix .c, $(BONUS_SRC))
-BONUS_OBJS = $(addsuffix .o, $(BONUS_SRC))
 
-.c.o: $(SRCS) $(BONUS_SRCS)
-	@$(CC) $(CFLAGS) -c -o $@ $<
+SRC		=	ft_printf.c			\
+			ft_string.c			\
+			ft_unsigned.c		\
+			ft_number.c			\
+			ft_hexadecimals.c	\
+			ft_char.c			\
+			ft_pointers.c		\
+			ft_tolower.c 	\
+			ft_putstr_fd.c 	\
+			ft_putendl_fd.c 	\
+			ft_isalnum.c 	\
+			ft_isalpha.c 	\
+			ft_isdigit.c 	\
+			ft_isascii.c 	\
+			ft_isprint.c 	\
+			ft_strlen.c 	\
+			ft_memset.c 	\
+			ft_bzero.c \
+			ft_memcpy.c \
+			ft_memmove.c \
+			ft_strlcpy.c \
+			ft_strlcat.c \
+			ft_toupper.c \
+			ft_strncmp.c \
+			ft_strnstr.c \
+			ft_putchar_fd.c \
+			ft_putnbr_fd.c \
+			ft_strjoin.c \
+			ft_calloc.c \
+			ft_strdup.c \
+			ft_memchr.c \
+			ft_memcmp.c \
+			ft_substr.c \
+			ft_itoa.c \
+			ft_split.c \
+			ft_strrchr.c \
+			ft_strmapi.c \
+			ft_striteri.c \
+			ft_atoi.c \
+			ft_strchr.c \
+			ft_strtrim.c \
+			ft_lstnew_bonus.c \
+			ft_lstadd_front_bonus.c \
+			ft_lstsize_bonus.c \
+			ft_lstlast_bonus.c \
+			ft_lstadd_back_bonus.c \
+			ft_lstdelone_bonus.c \
+			ft_lstclear_bonus.c \
+			ft_lstiter_bonus.c \
+			ft_lstmap_bonus.c  \
+			get_next_line.c \
+			get_next_line_utils.c \
+			get_next_line_bonus.c \
+			get_next_line_utils_bonus.c \
+			ft_atof.c  \
 
-$(NAME): $(OBJS)
-	@$(AR) $@ $^
-	@echo "Libft ready."
 
-bonus: $(OBJS) $(BONUS_OBJS)
-	@$(AR) $(NAME) $^
-	@echo "Libft + bonus ready."
+
+
+OBJ		=	${SRC:.c=.o}
+
+CC		=	gcc
+RM		=	rm -f
+AR		=	ar rc
+RN		=	ranlib
+
+CFLAGS	=	-Wall -Wextra -Werror
+
+# Colors
+DEF_COLOR   =   \033[0;39m
+GRAY        =   \033[0;90m
+RED         =   \033[0;91m
+GREEN       =   \033[0;92m
+YELLOW      =   \033[0;93m
+BLUE        =   \033[0;94m
+MAGENTA     =   \033[0;95m
+CYAN        =   \033[0;96m
+WHITE       =   \033[0;97m
 
 all: $(NAME)
+	norminette 
+	
+.c.o:
+	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+
+$(NAME):	${OBJ} 
+	@echo "Compiling .."
+	${AR} ${NAME} ${OBJ}
+	${RN} ${NAME}
+	@echo "$(GREEN)libft compiled!$(DEF_COLOR)"
+	@echo "$(BLUE)Compiled Objects:  $(words $(NAME)  ${OBJ})$(DEF_COLOR)"
 
 clean:
-	@rm -f *.o
-	@echo "Libft: removed .o object files."
+	@echo "$(RED)Removing .o  ...$(DEF_COLOR)"
+	${RM} ${OBJ}
+	@echo "$(BLUE)Deleted Objects: $(words ${OBJ})  ${OBJ}$(DEF_COLOR)"
+	@echo "$(GREEN)Done !"
 
 fclean: clean
-	@rm -f $(NAME)
-	@echo "Libft: removed libft.a file."
+	@echo "$(RED)Removing libft.a ...$(DEF_COLOR)"	
+	${RM} $(NAME)
+	@echo "$(BLUE)Deleted Objects:  $(words $(NAME))  $(NAME)$(DEF_COLOR)"
+	@echo "$(GREEN)Done !$(DEF_COLOR)"
 
-re: clean all
-
-.PHONY: all clean fclean re bonus
+re: fclean all  

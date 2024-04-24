@@ -3,47 +3,58 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcombeau <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 18:06:58 by mcombeau          #+#    #+#             */
-/*   Updated: 2021/12/02 16:48:58 by mcombeau         ###   ########.fr       */
+/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
+/*   Updated: 2024/02/12 11:46:38 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-/*
-	DESCRIPTION :
-	The function ft_atoi converts a string into an int.
-
-	RETURN VALUE :
-	The converted int.
-*/
+#include <stdio.h>
 
 int	ft_atoi(const char *str)
 {
 	int	num;
-	int	isneg;
+	int	sign;
 	int	i;
 
 	num = 0;
-	isneg = 1;
+	sign = 1;
 	i = 0;
-	while (str[i] && (str[i] == ' ' || str[i] == '\t'
-			|| str[i] == '\n' || str[i] == '\r'
-			|| str[i] == '\v' || str[i] == '\f'))
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
+		|| str[i] == '\f' || str[i] == '\r')
 		i++;
-	if (str[i] == '+')
-		i++;
-	else if (str[i] == '-')
+	if (str[i] == '+' || str[i] == '-')
 	{
-		isneg *= -1;
+		if (str[i] == '-')
+			sign = -1;
 		i++;
 	}
-	while (ft_isdigit(str[i]))
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		num = (num * 10) + (str[i] - '0');
+		num = num * 10 + (str[i] - '0');
 		i++;
 	}
-	return (num * isneg);
+	return (num * sign);
 }
+
+/*int		main()
+{
+	
+    const char *str1 = "123";
+    const char *str2 = "-456";
+    const char *str3 = "   789";
+    const char *str4 = "   +987";
+    const char *str5 = "   -654";
+    const char *str6 = "   123abc";
+
+    printf("'%s' convertido a entero: %d\n", str1, ft_atoi(str1));
+    printf("'%s' convertido a entero: %d\n", str2, ft_atoi(str2));
+    printf("'%s' convertido a entero: %d\n", str3, ft_atoi(str3));
+    printf("'%s' convertido a entero: %d\n", str4, ft_atoi(str4));
+    printf("'%s' convertido a entero: %d\n", str5, ft_atoi(str5));
+    printf("'%s' convertido a entero: %d\n", str6, ft_atoi(str6));
+
+    return 0;
+}*/

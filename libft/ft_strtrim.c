@@ -3,56 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcombeau <mcombeau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/27 16:51:42 by mcombeau          #+#    #+#             */
-/*   Updated: 2021/12/03 16:21:52 by mcombeau         ###   ########.fr       */
+/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
+/*   Updated: 2024/02/20 09:32:28 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-/*
-	DESCRIPTION :
-	The function ft_strtrim removes any characters of the given set from
-	the beginning and end of the given string s1, and allocates sufficient
-	memory to store the trimmed copy of the string.
-
-	RETURN VALUE :
-	A pointer to the trimmed copy of the string.
-	NULL if the memory allocation fails.
-*/
-
-static int	is_set(char c, char const *set)
-{
-	int	i;
-
-	i = 0;
-	while (set[i])
-	{
-		if (set[i] == c)
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
+//#include <stdio.h>
 char	*ft_strtrim(char const *s1, char const *set)
 {
+	char	*str;
 	size_t	start;
 	size_t	end;
 
-	if (!s1)
-		return (ft_strdup(""));
-	if (!set)
-		return (ft_strdup(s1));
 	start = 0;
-	end = ft_strlen(s1);
-	while (is_set(s1[start], set))
+	if (!s1 || !set)
+		return (NULL);
+	while (s1[start] && ft_strchr(set, s1[start]))
 		start++;
-	if (start == end)
-		return (ft_strdup(""));
-	while (is_set(s1[end - 1], set))
+	end = ft_strlen(s1);
+	while (end > start && ft_strchr(set, s1[end - 1]))
 		end--;
-	return (ft_substr(s1, start, end - start));
+	str = ft_substr(s1, start, end - start);
+	return (str);
 }
+/*int		main(){
+
+	const char *string = "	hola mundo  ";
+	const char *trimeo = " \t\n";
+
+	char	*cadena = ft_strtrim(*string, *trimeo);
+
+	printf("La cadena original es: %s\n", string);
+	printf("la cadena recortada es: %s\n", cadena);
+	free(cadena);
+	return 0;
+}*/

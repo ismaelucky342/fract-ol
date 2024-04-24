@@ -6,17 +6,12 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 13:01:46 by ismherna          #+#    #+#             */
-/*   Updated: 2024/04/24 13:01:46 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/04/24 14:11:38 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "fractol.h"
 
-/* clean_init:
-*	Initializes the fractol data structure with default
-*	values to be replaced later. Used for error detection.
-*/
 void	clean_init(t_fractol *f)
 {
 	f->mlx = NULL;
@@ -38,17 +33,6 @@ void	clean_init(t_fractol *f)
 	f->color = 0;
 }
 
-/* get_complex_layout:
-*	Maps the complex number axes to the window width and height to
-*	create an equivalence between a given pixel and a complex number.
-*		- The Mandelbox set real and imaginary axes range from 4 to -4
-*		so the edges are mapped to those numbers for the fractal to appear
-*		centered.
-*		- Julia needs a bit more space to the right than Mandelbrot or
-*		Burning Ship, so the mapping must also be shifted slightly.
-*	Also, one of the edges is always calculated according to the other edges
-*	to avoid fractal distortion if the window proportions change.
-*/
 void	get_complex_layout(t_fractol *f)
 {
 	if (f->set == MANDELBOX)
@@ -74,12 +58,6 @@ void	get_complex_layout(t_fractol *f)
 	}
 }
 
-/* init_img:
-*	Initializes an MLX image and a color palette. The color palette will
-*	be used to store every shade of color for every iteration number,
-*	and the color of each pixel will be stored in the image, which will
-*	then be displayed in the program window.
-*/
 static void	init_img(t_fractol *f)
 {
 	int		pixel_bits;
@@ -97,10 +75,6 @@ static void	init_img(t_fractol *f)
 	f->buf = buf;
 }
 
-/* reinit_image:
-*	Cleanly reinitializes the MLX image if the color palette or 
-*	fractal type is modified at runtime.
-*/
 void	reinit_img(t_fractol *f)
 {
 	if (f->mlx && f->img)
@@ -112,10 +86,6 @@ void	reinit_img(t_fractol *f)
 	init_img(f);
 }
 
-/* init:
-*	Creates a new MLX instance, a new window and populates
-*	the fractol data structure with default values.
-*/
 void	init(t_fractol *f)
 {
 	f->mlx = mlx_init();

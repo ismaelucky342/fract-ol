@@ -6,32 +6,27 @@
 #    By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/24 13:02:25 by ismherna          #+#    #+#              #
-#    Updated: 2024/04/24 13:02:25 by ismherna         ###   ########.fr        #
+#    Updated: 2024/04/24 14:06:16 by ismherna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= fractol
 
-# Compiler
 CC		= gcc
 CFLAGS	= -Werror -Wextra -Wall
 
-# Minilibx
 MLX_PATH	= mlx/
 MLX_NAME	= libmlx.a
 MLX			= $(MLX_PATH)$(MLX_NAME)
 
-# Libft
 LIBFT_PATH	= libft/
 LIBFT_NAME	= libft.a
 LIBFT		= $(LIBFT_PATH)$(LIBFT_NAME)
 
-# Includes
 INC			=	-I ./includes/\
 				-I ./libft/\
 				-I ./mlx/
 
-# Sources
 SRC_PATH	=	src/
 SRC			=	fractol.c \
 				initialization.c \

@@ -6,21 +6,13 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 13:02:41 by ismherna          #+#    #+#             */
-/*   Updated: 2024/04/24 13:02:41 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/04/24 14:13:45 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "fractol.h"
 
-/* interpolate:
-*	Interpolates between two hex colors. Each color channel must be
-*	calculated separately according to the formula:
-*		(endValue - startValue) * stepNumber / lastStepNumber + startValue
-*	The fractional component (stepNumber / lastStepNumber) must be provided
-*	as fraction parameter of this function.
-*	Note: rgb[3] : [0] = red, [1] = green, [2] = blue
-*/
 static int	interpolate(int startcolor, int endcolor, double fraction)
 {
 	int	start_rgb[3];
@@ -38,11 +30,6 @@ static int	interpolate(int startcolor, int endcolor, double fraction)
 	return (0xFF << 24 | start_rgb[0] << 16 | start_rgb[1] << 8 | start_rgb[2]);
 }
 
-/* set_color_mono:
-*	Sets a monochromatic color scheme. Colors range from
-*	black to the provided color, to white near the fractal
-*	border.
-*/
 void	set_color_mono(t_fractol *f, int color)
 {
 	int		i;
@@ -70,13 +57,6 @@ void	set_color_mono(t_fractol *f, int color)
 	f->palette[MAX_ITERATIONS -1] = 0;
 }
 
-/* set_color_multiple:
-*	Sets a multicolor color scheme. Colors range from the
-*	first color provided in the array to the last. The colors are
-*	interpolated for a smooth transition between each. It is possible
-*	to provide more than 4 colors by casting a larger array and specifying
-*	how many colors are included.
-*/
 void	set_color_multiple(t_fractol *f, int colors[4], int n)
 {
 	int		i;

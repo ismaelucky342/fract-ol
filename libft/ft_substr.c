@@ -1,46 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                           :+:      :+:    :+:*/
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcombeau <mcombeau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/26 16:50:44 by mcombeau          #+#    #+#             */
-/*   Updated: 2021/12/02 16:53:34 by mcombeau         ###   ########.fr       */
+/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
+/*   Updated: 2024/02/20 10:08:00 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-/*
-	DESCRIPTION :
-	The function ft_substr extracts a substring from the given string by
-	allocating sufficient memory for the new string starting at index start
-	and ending at len characters.
-
-	RETURN VALUE :
-	A pointer to the new string.
-	NULL if the memory allocation fails.
-*/
-
+//#include <stdio.h>
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*res;
-	char	*src;
-	size_t	reslen;
+	size_t	i;
+	char	*str;
+	size_t	max_len;
 
-	if (!s)
-		return (NULL);
-	if (ft_strlen(s) < (size_t)start)
+	if (!s || start > ft_strlen(s))
 		return (ft_strdup(""));
-	src = (char *)s + start;
-	if (ft_strlen(src) < len)
-		reslen = ft_strlen(src) + 1;
-	else
-		reslen = len + 1;
-	res = malloc(reslen * sizeof(char));
-	if (!res)
+	max_len = ft_strlen(s) - start;
+	if (len > max_len)
+		len = max_len;
+	str = (char *)malloc(sizeof(*s) * (len + 1));
+	if (!str)
 		return (NULL);
-	ft_strlcpy(res, src, reslen);
-	return (res);
+	i = 0;
+	while (i < len)
+	{
+		str[i] = s[start + i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }
+/*int		main(){
+
+	const	char *stringI = "hola muundo";
+	unsigned int   startI = 5;
+	size_t		lenI = 6;
+
+	char	*subcadena = ft_substr(stringI, startI, lenI);
+
+	if(subcadena){
+		printf("\n%s\n", subcadena);
+		free(subcadena);
+		}else {
+			printf("ERROR CADENA NO VALIDA");
+
+	}
+	return 0;
+}*/

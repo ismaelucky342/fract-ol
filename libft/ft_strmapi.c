@@ -3,43 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcombeau <mcombeau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/28 04:35:39 by mcombeau          #+#    #+#             */
-/*   Updated: 2021/12/02 16:21:12 by mcombeau         ###   ########.fr       */
+/*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
+/*   Updated: 2024/02/12 11:51:58 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-	DESRIPTION :
-	The function ft_strmapi applies the given function f to each character
-	in the given string s and allocates sufficient memory to store the
-	resulting new string. 
-
-	RETURN VALUE :
-	A pointer to the newly created string. NULL if the memory allocation
-	fails.	
-*/
+char	map_function(unsigned int index, char c)
+{
+	if (index % 2 == 0)
+		return (ft_toupper(c));
+	else
+		return (ft_tolower(c));
+}
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char			*str;
-	unsigned int	i;
+	int		i;
+	int		len;
+	char	*str;
 
-	if (!s || (!s && !f))
-		return (ft_strdup(""));
-	else if (!f)
-		return (ft_strdup(s));
-	str = ft_strdup(s);
-	if (!str)
-		return (NULL);
 	i = 0;
-	while (s[i])
+	len = ft_strlen(s);
+	str = malloc(sizeof(char) * (len + 1));
+	if (!s || !str)
+		return (NULL);
+	while (i < len)
 	{
-		str[i] = (*f)(i, s[i]);
+		str[i] = f(i, s[i]);
 		i++;
 	}
+	str[len] = '\0';
 	return (str);
 }
