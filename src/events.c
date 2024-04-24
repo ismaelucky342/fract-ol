@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcombeau <mcombeau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/08 16:18:56 by mcombeau          #+#    #+#             */
-/*   Updated: 2022/04/20 14:20:11 by mcombeau         ###   ########.fr       */
+/*   Created: 2024/03/08 17:25:43 by ismherna          #+#    #+#             */
+/*   Updated: 2024/03/12 11:53:54 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+
 
 #include "fractol.h"
 

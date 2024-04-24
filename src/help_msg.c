@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   help_msg.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcombeau <mcombeau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/17 15:26:41 by mcombeau          #+#    #+#             */
-/*   Updated: 2022/04/21 21:50:24 by mcombeau         ###   ########.fr       */
+/*   Created: 2024/04/24 13:01:37 by ismherna          #+#    #+#             */
+/*   Updated: 2024/04/24 13:01:37 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "fractol.h"
 

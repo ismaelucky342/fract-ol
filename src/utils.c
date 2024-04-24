@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcombeau <mcombeau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/08 16:21:53 by mcombeau          #+#    #+#             */
-/*   Updated: 2022/04/18 13:54:16 by mcombeau         ###   ########.fr       */
+/*   Created: 2024/04/24 13:02:12 by ismherna          #+#    #+#             */
+/*   Updated: 2024/04/24 13:02:12 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "fractol.h"
 

@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   color_interpolated.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcombeau <mcombeau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/17 17:06:07 by mcombeau          #+#    #+#             */
-/*   Updated: 2022/04/18 15:38:09 by mcombeau         ###   ########.fr       */
+/*   Created: 2024/04/24 13:02:41 by ismherna          #+#    #+#             */
+/*   Updated: 2024/04/24 13:02:41 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "fractol.h"
 

@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   initialization.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcombeau <mcombeau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/12 14:31:33 by mcombeau          #+#    #+#             */
-/*   Updated: 2022/04/24 14:56:48 by mcombeau         ###   ########.fr       */
+/*   Created: 2024/04/24 13:01:46 by ismherna          #+#    #+#             */
+/*   Updated: 2024/04/24 13:01:46 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "fractol.h"
 

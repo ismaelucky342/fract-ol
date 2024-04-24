@@ -3,28 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   color_special.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcombeau <mcombeau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/17 17:10:18 by mcombeau          #+#    #+#             */
-/*   Updated: 2022/04/18 15:44:55 by mcombeau         ###   ########.fr       */
+/*   Created: 2024/04/24 13:02:52 by ismherna          #+#    #+#             */
+/*   Updated: 2024/04/24 13:02:52 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-	Notice: These color scheme functions were created purely by accident,
-	and may not always work well with every color provided. They rely on
-	pushing past FFFFFF or 000000 which can have some unpredictable results.
-	
-	When they do work, they	create very interesting and beautiful
-	colorings, though, which is why they have not been cut from this
-	project.
-
-	Typically, they work well with middling colors, especially ones like:
-		9966FF	33FF33	FF6666	CCCC00	CC6600
-	
-	But they don't work too well with edge colors like:
-		000000	FFFFFF	00FF00	FF0000	0000FF	FFFF00
-*/
 
 #include "fractol.h"
 

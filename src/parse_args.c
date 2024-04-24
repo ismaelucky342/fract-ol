@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   parse_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcombeau <mcombeau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/08 16:20:37 by mcombeau          #+#    #+#             */
-/*   Updated: 2022/04/21 21:52:52 by mcombeau         ###   ########.fr       */
+/*   Created: 2024/04/24 13:01:53 by ismherna          #+#    #+#             */
+/*   Updated: 2024/04/24 13:01:53 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "fractol.h"
 
