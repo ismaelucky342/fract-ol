@@ -6,7 +6,7 @@
 #    By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/22 15:48:04 by ismherna          #+#    #+#              #
-#    Updated: 2024/04/24 13:42:56 by ismherna         ###   ########.fr        #
+#    Updated: 2024/04/24 16:53:46 by ismherna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,7 +71,6 @@ SRC		=	ft_printf.c			\
 			get_next_line_utils.c \
 			get_next_line_bonus.c \
 			get_next_line_utils_bonus.c \
-			ft_atof.c  \
 
 
 

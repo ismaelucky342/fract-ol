@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 10:57:52 by ismherna          #+#    #+#             */
-/*   Updated: 2024/04/24 13:42:30 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/04/24 16:53:43 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-double	ft_atof(char *str);
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
 int		ft_isalnum(int c);

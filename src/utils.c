@@ -6,11 +6,12 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 13:02:12 by ismherna          #+#    #+#             */
-/*   Updated: 2024/04/24 14:10:49 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/04/24 16:59:16 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+#include "mlx.h"
 
 void	clean_exit(int exit_code, t_fractol *f)
 {

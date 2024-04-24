@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 13:01:37 by ismherna          #+#    #+#             */
-/*   Updated: 2024/04/24 16:02:01 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/04/24 16:29:58 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	print_fractal_options(void)
 {
-	ft_putendl_fd("+===============  Available Fractals  ===============+", 1);
+	ft_putendl_fd("+===============  Fractals  ===============+", 1);
 	ft_putendl_fd("Which fractal would you like to view?", 1);
 	ft_putendl_fd("\tM - Mandelbrot", 1);
 	ft_putendl_fd("\tJ - Julia", 1);
