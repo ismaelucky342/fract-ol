@@ -33,9 +33,8 @@ $> ./fractol S_Triangle
 ### Julia
 ![image](https://github.com/ismaelucky342/fract-ol/assets/153450550/0b21966e-207d-47d7-bb99-6bb1c8bad2fe)
 
-### Sierpiński triangle
+### Mandelbox
 
-![image](https://github.com/ismaelucky342/fract-ol/assets/153450550/784ed14e-b92a-4910-a6c1-7d16edb5a625)
 
 # Extras 
 This new project will be an opportunity to get familiar with miniLibX (complex function library provided by school 42).
