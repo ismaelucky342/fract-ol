@@ -31,9 +31,9 @@ SRC_PATH	=	src/
 SRC			=	fractol.c \
 				initialization.c \
 				utils.c \
-				events.c \
+				key_events.c \
 				render.c \
-				color.c \
+				colors.c \
 				parse_args.c \
 				help_msg.c \
 				fractal_sets/mandelbrot.c \
