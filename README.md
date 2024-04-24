@@ -21,7 +21,7 @@ $> make
 $> ./fractol Mandelbrot
 $> ./fractol Julia
 $> ./fractol Burningship
-$> ./fractol S_Triangle
+$> ./fractol Mandelbox
 ```
 ## Pictures
 ### Mandelbrot
@@ -34,6 +34,7 @@ $> ./fractol S_Triangle
 ![image](https://github.com/ismaelucky342/fract-ol/assets/153450550/0b21966e-207d-47d7-bb99-6bb1c8bad2fe)
 
 ### Mandelbox
+![image](https://github.com/ismaelucky342/fract-ol/assets/153450550/01d7bd1d-3fc8-4be1-b97b-27bc5ec4fee0)
 
 
 # Extras 
