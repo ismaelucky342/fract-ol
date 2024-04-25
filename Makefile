@@ -6,7 +6,7 @@
 #    By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/24 13:02:25 by ismherna          #+#    #+#              #
-#    Updated: 2024/04/24 14:06:16 by ismherna         ###   ########.fr        #
+#    Updated: 2024/04/25 23:11:49 by ismherna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,7 +65,7 @@ $(OBJ_PATH):
 
 $(MLX):
 	@echo "Making MiniLibX..."
-	@make -sC $(MLX_PATH) 2>/dev/null
+	@make -C $(MLX_PATH)
 
 
 $(LIBFT):
