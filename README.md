@@ -10,7 +10,8 @@ Several natural phenomena such as Romanesco have some of the characteristics of 
 This project consists of multiple fractals:
 - Mandelbrot
 - Julia
-- BurningShip.
+- BurningShip
+- Mandelbox
 
 We must increase and decrease the maximum iteration for the calculation of the shape, as well as Enlarge and reduce the zoom, we also have multiple color patterns.
 
