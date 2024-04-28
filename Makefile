@@ -34,16 +34,15 @@ SRC			=	fractol.c \
 				key_events.c \
 				render.c \
 				colors.c \
-				parse_args.c \
+				parse.c \
 				help_msg.c \
-				fractal_sets/mandelbrot.c \
-				fractal_sets/julia.c \
-				fractal_sets/burning_ship.c \
-				fractal_sets/tricorn.c \
-				fractal_sets/mandelbox.c \
-				color_schemes/color_interpolated.c \
-				color_schemes/color_special.c \
-				color_schemes/color_striped.c
+				mandelbrot.c \
+				julia.c \
+				burning_ship.c \
+				mandelbox.c \
+				color_interpolated.c \
+				color_special.c \
+				color_striped.c
 SRCS		= $(addprefix $(SRC_PATH), $(SRC))
 
 # Objects
