@@ -73,14 +73,14 @@ static int	key_event_extend(int keycode, t_fractol *mlx)
 	return (0);
 }
 
-int	key_event(int keycode, t_fractol *mlx)
+int	key_event(int keycode, t_fractol *mlx)// manejo de eventos de tecleo 
 {
 	if (keycode == KEY_ESC)
 	{
 		end_fractol(mlx);
 		return (0);
 	}
-	else if (keycode == KEY_PLUS)
+	else if (keycode == KEY_PLUS) 
 		zoom(mlx, 0.5);
 	else if (keycode == KEY_MINUS)
 		zoom(mlx, 2);
