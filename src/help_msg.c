@@ -14,36 +14,36 @@
 
 void	print_fractal_options(void)
 {
-	ft_putendl_fd("+===============  FRACTALS  ===============+", 1);
-	ft_putendl_fd("\tM - Mandelbrot", 1);
-	ft_putendl_fd("\tJ - Julia", 1);
-	ft_putendl_fd("\tB - Burning Ship", 1);
-	ft_putendl_fd("\tX - Mandelbox", 1);
+	ft_printf("+===============  FRACTALS  ===============+");
+	ft_printf("\tM - Mandelbrot");
+	ft_printf("\tJ - Julia");
+	ft_printf("\tB - Burning Ship");
+	ft_printf("\tX - Mandelbox");
 }
 
 void	print_color_options(void)
 {
-	ft_putendl_fd("\n+=============== COLOR  ====================+", 1);
-	ft_putendl_fd("Pick a display color by providing a hexadecimal code.", 1);
+	ft_printf("\n+=============== COLOR  ====================+");
+	ft_printf("Pick a display color by providing a hexadecimal code.");
 }
 
 void	print_controls(void)
 {
-	ft_putendl_fd("\n+===============  CONTROLS  =========================+", 1);
-	ft_putendl_fd("WASD or arrow keys\tmove view.", 1);
-	ft_putendl_fd("+/- or scroll wheel\tzoom in and out.", 1);
-	ft_putendl_fd("Spacebar\t\tchange color schemes.", 1);
-	ft_putendl_fd("Left click\t\tshift Julia set [Julia only].", 1);
-	ft_putendl_fd("1, 2, 3, 4, 5\t\tswitch fractals.", 1);
-	ft_putendl_fd("ESC or close window\tquit fract'ol.", 1);
-	ft_putendl_fd("+====================================================+\n", 1);
+	ft_printf("\n+===============  CONTROLS  =========================+");
+	ft_printf("WASD or arrow keys\tmove view.");
+	ft_printf("+/- or scroll wheel\tzoom in and out.");
+	ft_printf("Spacebar\t\tchange color schemes.");
+	ft_printf("Left click\t\tshift Julia set [Julia only].");
+	ft_printf("1, 2, 3, 4, 5\t\tswitch fractals.");
+	ft_printf("ESC or close window\tquit fract'ol.");
+	ft_printf("+====================================================+\n");
 }
 
 void	help_msg(t_fractol *f)
 {
-	ft_putendl_fd("\n+====================================================+", 1);
-	ft_putendl_fd("|                   ISMHERNA FRACT'OL                  |", 1);
-	ft_putendl_fd("+====================================================+\n", 1);
+	ft_printf("\n+====================================================+");
+	ft_printf("|                   ISMHERNA FRACT'OL                  |");
+	ft_printf("+====================================================+\n");
 	print_fractal_options();
 	print_color_options();
 	clean_exit(EXIT_FAILURE, f);
