@@ -6,7 +6,7 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 16:23:44 by mcombeau          #+#    #+#             */
-/*   Updated: 2024/04/25 23:06:38 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/05/01 10:36:49 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	set_color_graphic(t_fractol *f, int color);
 int		get_percent_color(int color, double percent);
 
 /*  Events   */
-int		key_event(int keycode, t_fractol *mlx);
+int		keys(int keycode, t_fractol *mlx);
 int		mouse_event(int keycode, int x, int y, t_fractol *mlx);
 
 /* Initialization */

@@ -1,15 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parseo.c                                           :+:      :+:    :+:   */
+/*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 13:01:53 by ismherna          #+#    #+#             */
-/*   Updated: 2024/04/24 13:48:21 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/05/01 00:05:32 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "fractol.h"
 
@@ -22,8 +21,8 @@ static int	skip_space_sign_0x(char *color)
 		i++;
 	if (color[i] == '+')
 		i++;
-	if (color[i] == '0' && (color[i + 1]
-			&& (color[i + 1] == 'x' || color[i] == 'X')))
+	if (color[i] == '0' && (color[i + 1] && (color[i + 1] == 'x'
+				|| color[i] == 'X')))
 		i = i + 2;
 	return (i);
 }
@@ -80,7 +79,7 @@ static int	skip_space_sign(char *str, int *is_neg)
 	return (i);
 }
 
-double	ft_atof_fractol(char *str)
+double	ft_atof(char *str)
 {
 	int		i;
 	double	nb;

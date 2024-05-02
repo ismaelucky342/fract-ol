@@ -6,7 +6,7 @@
 #    By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/24 13:02:25 by ismherna          #+#    #+#              #
-#    Updated: 2024/04/25 23:11:49 by ismherna         ###   ########.fr        #
+#    Updated: 2024/05/01 10:52:01 by ismherna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ SRC_PATH	=	src/
 SRC			=	fractol.c \
 				initialization.c \
 				utils.c \
-				key_events.c \
+				keys.c \
 				render.c \
 				colors.c \
 				parse.c \
@@ -78,6 +78,8 @@ $(NAME): $(OBJS)
 
 bonus: all
 
+
+#remove objects and exeutable file 
 clean:
 	@echo "Removing .o object files..."
 	@rm -rf $(OBJ_PATH)

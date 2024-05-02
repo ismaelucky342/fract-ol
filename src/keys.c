@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   events.c                                           :+:      :+:    :+:   */
+/*   keys.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 17:25:43 by ismherna          #+#    #+#             */
-/*   Updated: 2024/04/24 14:12:58 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/05/01 00:07:37 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	move(t_fractol *f, double distance, char direction)
 	}
 }
 
-static int	key_event_extend(int keycode, t_fractol *mlx)
+static int	keys_plus(int keycode, t_fractol *mlx)
 {
 	if (keycode == KEY_ONE && mlx->set != MANDELBROT)
 		mlx->set = MANDELBROT;
@@ -62,9 +62,7 @@ static int	key_event_extend(int keycode, t_fractol *mlx)
 		mlx->set = JULIA;
 	else if (keycode == KEY_THREE && mlx->set != BURNING_SHIP)
 		mlx->set = BURNING_SHIP;
-	else if (keycode == KEY_FOUR && mlx->set != TRICORN)
-		mlx->set = TRICORN;
-	else if (keycode == KEY_FIVE && mlx->set != MANDELBOX)
+	else if (keycode == KEY_FOUR && mlx->set != MANDELBOX)
 		mlx->set = MANDELBOX;
 	else
 		return (1);
@@ -73,14 +71,14 @@ static int	key_event_extend(int keycode, t_fractol *mlx)
 	return (0);
 }
 
-int	key_event(int keycode, t_fractol *mlx)// manejo de eventos de tecleo 
+int	keys(int keycode, t_fractol *mlx)
 {
 	if (keycode == KEY_ESC)
 	{
 		end_fractol(mlx);
 		return (0);
 	}
-	else if (keycode == KEY_PLUS) 
+	else if (keycode == KEY_PLUS)
 		zoom(mlx, 0.5);
 	else if (keycode == KEY_MINUS)
 		zoom(mlx, 2);
@@ -94,7 +92,7 @@ int	key_event(int keycode, t_fractol *mlx)// manejo de eventos de tecleo
 		move(mlx, 0.2, 'R');
 	else if (keycode == KEY_SPACE)
 		color_shift(mlx);
-	else if (!key_event_extend(keycode, mlx))
+	else if (!keys_plus(keycode, mlx))
 		return (1);
 	else
 		return (1);
@@ -116,7 +114,7 @@ int	mouse_event(int keycode, int x, int y, t_fractol *mlx)
 		if (y < 0)
 			move(mlx, (double)y * -1 / HEIGHT, 'U');
 		else if (y > 0)
-			move (mlx, (double)y / HEIGHT, 'D');
+			move(mlx, (double)y / HEIGHT, 'D');
 	}
 	else if (keycode == MOUSE_WHEEL_DOWN)
 		zoom(mlx, 2);

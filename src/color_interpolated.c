@@ -6,10 +6,9 @@
 /*   By: ismherna <ismherna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 13:02:41 by ismherna          #+#    #+#             */
-/*   Updated: 2024/04/24 14:13:45 by ismherna         ###   ########.fr       */
+/*   Updated: 2024/04/30 23:39:50 by ismherna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "fractol.h"
 
@@ -54,7 +53,7 @@ void	set_color_mono(t_fractol *f, int color)
 		color2 = 0xFFFFFF;
 		i += j;
 	}
-	f->palette[MAX_ITERATIONS -1] = 0;
+	f->palette[MAX_ITERATIONS - 1] = 0;
 }
 
 void	set_color_multiple(t_fractol *f, int colors[4], int n)
