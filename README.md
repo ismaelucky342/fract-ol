@@ -1,5 +1,5 @@
 # Fract-ol
-![image](https://github.com/ismaelucky342/fract-ol/assets/153450550/59d0be7b-193b-4d10-b637-2ec0b085e3ae)
+![image](https://github.com/ismaelucky342/fract-ol/assets/153450550/f89dfe8c-ea6d-4c11-a95e-308c67beda7f)
 
 The term fractal was first used by the mathematician Benoit Mandelbrot.
 in 1974, was based on the Latin word fractus, which means “broken” or “fractured.”
