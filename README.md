@@ -19,10 +19,10 @@ We must increase and decrease the maximum iteration for the calculation of the s
 
 ```
 $> make
-$> ./fractol Mandelbrot
-$> ./fractol Julia
-$> ./fractol Burningship
-$> ./fractol Mandelbox
+$> ./fractol M
+$> ./fractol J
+$> ./fractol B
+$> ./fractol M
 ```
 ## Pictures
 ### Mandelbrot
