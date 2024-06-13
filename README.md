@@ -13,8 +13,6 @@ This project consists of multiple fractals:
 - BurningShip (B)
 - Mandelbox (X)
 
-We must increase and decrease the maximum iteration for the calculation of the shape, as well as Enlarge and reduce the zoom, we also have multiple color patterns.
-
 ## how to use fract-ol?
 ```
 $> make
