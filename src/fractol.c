@@ -40,7 +40,7 @@ static void	get_set(t_fractol *f, char **av)
 	else if (type_cmp(av[1], "mandelbox", 'x', '5'))
 		f->set = MANDELBOX;
 	else
-		help_msg(f);
+		help_menu();
 }
 
 static void	get_julia_starting_values(t_fractol *f, int ac, char **av)
@@ -52,26 +52,26 @@ static void	get_julia_starting_values(t_fractol *f, int ac, char **av)
 		return ;
 	}
 	if (ac == 3)
-		help_msg(f);
+		help_menu();
 	if (!ft_strchr(av[2], '.'))
-		help_msg(f);
+		help_menu();
 	if (!ft_strchr(av[3], '.'))
-		help_msg(f);
+		help_menu();
 	f->kr = ft_atof(av[2]);
 	f->ki = ft_atof(av[3]);
 	if (f->kr > 2.0 || f->kr < -2.0)
-		help_msg(f);
+		help_menu();
 	if (f->ki >= 2.0 || f->ki <= -2.0)
-		help_msg(f);
+		help_menu();
 }
 
 static void	handle_args(t_fractol *f, int ac, char **av)
 {
 	get_set(f, av);
 	if (f->set != JULIA && ac > 3)
-		help_msg(f);
+		help_menu();
 	else if (f->set == JULIA && ac > 5)
-		help_msg(f);
+		help_menu();
 	get_julia_starting_values(f, ac, av);
 	get_color(f, ac, av);
 }
@@ -81,7 +81,7 @@ int	main(int ac, char **av)
 	t_fractol	f;
 
 	if (ac < 2)
-		help_msg(&f);
+		help_menu();
 	clean_init(&f);
 	handle_args(&f, ac, av);
 	init(&f);

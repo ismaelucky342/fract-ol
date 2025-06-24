@@ -91,5 +91,5 @@ double	ft_atof(char *str);
 int		end_fractol(t_fractol *mlx);
 void	clean_exit(int error_code, t_fractol *f);
 int		msg(char *str1, char *str2, int errno);
-void	help_msg(t_fractol *f);
+void	help_menu();
 #endif

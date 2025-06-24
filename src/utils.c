@@ -19,7 +19,7 @@ void	clean_exit(int exit_code, t_fractol *f)
 		exit(exit_code);
 	if (f->palette)
 		free(f->palette);
-	if (f->img)
+	if (f->img && f->mlx)
 		mlx_destroy_image(f->mlx, f->img);
 	if (f->win && f->mlx)
 		mlx_destroy_window(f->mlx, f->win);
@@ -31,6 +31,7 @@ void	clean_exit(int exit_code, t_fractol *f)
 	}
 	exit(exit_code);
 }
+
 
 int	msg(char *str1, char *str2, int errno)
 {

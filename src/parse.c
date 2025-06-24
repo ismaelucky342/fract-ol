@@ -27,7 +27,7 @@ static int	skip_space_sign_0x(char *color)
 	return (i);
 }
 
-static int	ft_atox_color(t_fractol *f, char *color)
+static int	ft_atox_color(char *color)
 {
 	int	i;
 	int	x;
@@ -49,16 +49,16 @@ static int	ft_atox_color(t_fractol *f, char *color)
 	if (x == 6 && !color[i])
 		return (n);
 	else
-		help_msg(f);
+		help_menu();
 	return (-1);
 }
 
 void	get_color(t_fractol *f, int ac, char **av)
 {
 	if (f->set == JULIA && ac == 5)
-		f->color = ft_atox_color(f, av[4]);
+		f->color = ft_atox_color( av[4]);
 	else if (f->set != JULIA && ac == 3)
-		f->color = ft_atox_color(f, av[2]);
+		f->color = ft_atox_color( av[2]);
 	if (ac == 2 || (f->set == JULIA && ac == 4))
 		f->color = 0x9966FF;
 }
