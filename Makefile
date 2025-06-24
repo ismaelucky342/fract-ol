@@ -93,7 +93,7 @@ bonus: all
 clean:
 	@echo "Removing .o object files..."
 	@rm -rf $(OBJ_PATH)
-	@make clean -C $(MLX_PATH)
+	@-make -s clean -C $(MLX_PATH)
 	@make clean -C $(LIBFT_PATH)
 
 fclean: clean
